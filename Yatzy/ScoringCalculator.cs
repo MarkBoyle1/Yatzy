@@ -5,7 +5,6 @@ namespace Yatzy
 {
     public class ScoringCalculator
     {
-        //Adds all numbers together.
         public int CalculateChanceScore(List<int> playerDiceRoll)
         {
             int score = 0;
@@ -27,7 +26,6 @@ namespace Yatzy
             return 50;
         }
         
-        //Adds together a specified number.
         public int CalculateScoreForSingleNumber(List<int> playerDiceRoll, int category)
         {
             int score = 0;
