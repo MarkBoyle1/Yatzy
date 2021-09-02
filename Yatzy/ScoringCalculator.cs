@@ -9,9 +9,9 @@ namespace Yatzy
         public int CalculateChanceScore(List<int> playerDiceRoll)
         {
             int score = 0;
-            foreach (int diceRoll in playerDiceRoll)
+            foreach (int dice in playerDiceRoll)
             {
-                score += diceRoll;
+                score += dice;
             }
             return score;
         }
@@ -25,6 +25,18 @@ namespace Yatzy
             }
 
             return 50;
+        }
+        
+        //Adds together a specified number.
+        public int CalculateScoreForSingleNumber(List<int> playerDiceRoll, int category)
+        {
+            int score = 0;
+            foreach (int dice in playerDiceRoll)
+            {
+                if(dice == category)
+                    score += dice;
+            }
+            return score;
         }
     }
 }

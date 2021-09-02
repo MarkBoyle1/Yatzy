@@ -34,5 +34,12 @@ namespace Yatzy.Tests
             List<int> playerDiceRoll = new List<int>() {1, 1, 1, 2, 1};
             Assert.Equal(0, _scoringCalculator.CalculateYatzyScore(playerDiceRoll));
         }
+        
+        [Fact]
+        public void given_playerDiceRollEquals1_1_2_2_4_and_CategoryEqualsFours_when_CalculateScoreForSingleNumber_then_return_8()
+        {
+            List<int> playerDiceRoll = new List<int>() {1, 1, 2, 4, 4};
+            Assert.Equal(8, _scoringCalculator.CalculateScoreForSingleNumber(playerDiceRoll, 4));
+        }
     }    
 }
