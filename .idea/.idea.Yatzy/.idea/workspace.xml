@@ -4,7 +4,7 @@
     <projectFile>Yatzy/Yatzy.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="583bf5dd-24ec-4937-a134-cfa265e23891" name="Changes" comment="Can calculate score for four of a kind">
+    <list default="true" id="583bf5dd-24ec-4937-a134-cfa265e23891" name="Changes" comment="Can calculate score for small and large straight">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Yatzy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Yatzy/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy.Tests/ScoringTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy.Tests/ScoringTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/ScoringCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/ScoringCalculator.cs" afterDir="false" />
@@ -23,6 +23,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -70,7 +71,7 @@
       <updated>1630450815509</updated>
       <workItem from="1630450820538" duration="8909000" />
       <workItem from="1630626127267" duration="55000" />
-      <workItem from="1630626291270" duration="7823000" />
+      <workItem from="1630626291270" duration="10860000" />
     </task>
     <task id="LOCAL-00001" summary="Can calculate chance score">
       <created>1630543371776</created>
@@ -121,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630639176001</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Can calculate score for small and large straight">
+      <created>1630640382608</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1630640382608</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,6 +159,7 @@
     <MESSAGE value="Can calculate score for pair and two pairs" />
     <MESSAGE value="Can calculate score for three of a kind" />
     <MESSAGE value="Can calculate score for four of a kind" />
-    <option name="LAST_COMMIT_MESSAGE" value="Can calculate score for four of a kind" />
+    <MESSAGE value="Can calculate score for small and large straight" />
+    <option name="LAST_COMMIT_MESSAGE" value="Can calculate score for small and large straight" />
   </component>
 </project>

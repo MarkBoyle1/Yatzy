@@ -132,5 +132,26 @@ namespace Yatzy.Tests
             List<int> playerDiceRoll = new List<int>() {2, 3, 4, 5, 6};
             Assert.Equal(20, _scoringCalculator.CalculateStraightScore(playerDiceRoll, "largeStraight"));
         }
+        
+        [Fact]
+        public void given_playerDiceRollEquals1_1_2_2_2_when_CalculateFullHouseScore_then_return_8()
+        {
+            List<int> playerDiceRoll = new List<int>() {1, 1, 2, 2, 2};
+            Assert.Equal(8, _scoringCalculator.CalculateFullHouseScore(playerDiceRoll));
+        }
+        
+        [Fact]
+        public void given_playerDiceRollEquals2_2_3_3_4_when_CalculateFullHouseScore_then_return_0()
+        {
+            List<int> playerDiceRoll = new List<int>() {2, 2, 3, 3, 4};
+            Assert.Equal(0, _scoringCalculator.CalculateFullHouseScore(playerDiceRoll));
+        }
+        
+        [Fact]
+        public void given_playerDiceRollEquals4_4_4_4_4_when_CalculateFullHouseScore_then_return_0()
+        {
+            List<int> playerDiceRoll = new List<int>() {4, 4, 4, 4, 4};
+            Assert.Equal(0, _scoringCalculator.CalculateFullHouseScore(playerDiceRoll));
+        }
     }    
 }

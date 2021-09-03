@@ -56,7 +56,7 @@ namespace Yatzy
         private List<int> CollectDuplicateNumbers(List<int> diceRoll)
         {
             List<int> pairs = new List<int>();
-            var groupings = diceRoll.GroupBy(number => number);
+            var groupings = GroupTogetherNumbers(diceRoll);
             foreach (var value in groupings)
             {
                 if(value.Count() > 1)
@@ -68,7 +68,7 @@ namespace Yatzy
 
         public int CalculateThreeOfAKindScore(List<int> diceRoll)
         {
-            var groupings = diceRoll.GroupBy(number => number);
+            var groupings = GroupTogetherNumbers(diceRoll);
             foreach (var value in groupings)
             {
                 if(value.Count() > 2)
@@ -80,7 +80,7 @@ namespace Yatzy
         
         public int CalculateFourOfAKindScore(List<int> diceRoll)
         {
-            var groupings = diceRoll.GroupBy(number => number);
+            var groupings = GroupTogetherNumbers(diceRoll);
             foreach (var value in groupings)
             {
                 if(value.Count() > 3)
@@ -109,6 +109,20 @@ namespace Yatzy
         public bool CheckForStraight(List<int> diceRoll, int missingNumber)
         {
             return (diceRoll.Distinct().Count() == 5 && !diceRoll.Contains(missingNumber));
+        }
+        
+        public int CalculateFullHouseScore(List<int> diceRoll)
+        {
+            var groupings = GroupTogetherNumbers(diceRoll);
+            if(groupings.Distinct().Count() == 2 && groupings.Any(dice => dice.Count() == 2))
+                return diceRoll.Sum();
+            
+            return 0;
+        }
+
+        public IEnumerable<IGrouping<int, int>> GroupTogetherNumbers(List<int> diceRoll)
+        {
+            return diceRoll.GroupBy(number => number);
         }
     }
 }
