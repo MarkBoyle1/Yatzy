@@ -41,5 +41,40 @@ namespace Yatzy.Tests
             List<int> playerDiceRoll = new List<int>() {1, 1, 2, 4, 4};
             Assert.Equal(8, _scoringCalculator.CalculateScoreForSingleNumber(playerDiceRoll, 4));
         }
+        
+        [Fact]
+        public void given_playerDiceRollEquals3_3_3_4_4_when_CalculatePairScore_then_return_8()
+        {
+            List<int> playerDiceRoll = new List<int>() {3, 3, 3, 4, 4};
+            Assert.Equal(8, _scoringCalculator.CalculatePairScore(playerDiceRoll));
+        }
+        
+        [Fact]
+        public void given_playerDiceRollEquals3_3_3_4_1_when_CalculatePairScore_then_return_6()
+        {
+            List<int> playerDiceRoll = new List<int>() {3, 3, 3, 4, 1};
+            Assert.Equal(6, _scoringCalculator.CalculatePairScore(playerDiceRoll));
+        }
+        
+        [Fact]
+        public void given_playerDiceRollEquals1_1_2_3_3_when_CalculateTwoPairsScore_then_return_8()
+        {
+            List<int> playerDiceRoll = new List<int>() {1, 1, 2, 3, 3};
+            Assert.Equal(8, _scoringCalculator.CalculateTwoPairsScore(playerDiceRoll));
+        }
+        
+        [Fact]
+        public void given_playerDiceRollEquals1_1_2_3_4_when_CalculateTwoPairsScore_then_return_0()
+        {
+            List<int> playerDiceRoll = new List<int>() {1, 1, 2, 3, 4};
+            Assert.Equal(0, _scoringCalculator.CalculateTwoPairsScore(playerDiceRoll));
+        }
+        
+        [Fact]
+        public void given_playerDiceRollEquals1_1_2_2_2_when_CalculateTwoPairsScore_then_return_6()
+        {
+            List<int> playerDiceRoll = new List<int>() {1, 1, 2, 2, 2};
+            Assert.Equal(6, _scoringCalculator.CalculateTwoPairsScore(playerDiceRoll));
+        }
     }    
 }
