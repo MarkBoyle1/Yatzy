@@ -65,5 +65,17 @@ namespace Yatzy
 
             return pairs;
         }
+
+        public int CalculateThreeOfAKindScore(List<int> diceRoll)
+        {
+            var groupings = diceRoll.GroupBy(number => number);
+            foreach (var value in groupings)
+            {
+                if(value.Count() > 2)
+                    return value.Key * 3;
+            }
+
+            return 0;
+        }
     }
 }

@@ -76,5 +76,26 @@ namespace Yatzy.Tests
             List<int> playerDiceRoll = new List<int>() {1, 1, 2, 2, 2};
             Assert.Equal(6, _scoringCalculator.CalculateTwoPairsScore(playerDiceRoll));
         }
+        
+        [Fact]
+        public void given_playerDiceRollEquals3_3_3_4_5_when_CalculateThreeOfAKindScore_then_return_9()
+        {
+            List<int> playerDiceRoll = new List<int>() {3, 3, 3, 4, 5};
+            Assert.Equal(9, _scoringCalculator.CalculateThreeOfAKindScore(playerDiceRoll));
+        }
+        
+        [Fact]
+        public void given_playerDiceRollEquals3_3_4_5_6_when_CalculateThreeOfAKindScore_then_return_0()
+        {
+            List<int> playerDiceRoll = new List<int>() {3, 3, 4, 5, 6};
+            Assert.Equal(0, _scoringCalculator.CalculateThreeOfAKindScore(playerDiceRoll));
+        }
+        
+        [Fact]
+        public void given_playerDiceRollEquals3_3_3_3_1_when_CalculateThreeOfAKindScore_then_return_9()
+        {
+            List<int> playerDiceRoll = new List<int>() {3, 3, 3, 3, 1};
+            Assert.Equal(9, _scoringCalculator.CalculateThreeOfAKindScore(playerDiceRoll));
+        }
     }    
 }
