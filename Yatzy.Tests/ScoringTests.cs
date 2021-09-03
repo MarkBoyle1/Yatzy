@@ -118,5 +118,19 @@ namespace Yatzy.Tests
             List<int> playerDiceRoll = new List<int>() {2, 2, 2, 2, 2};
             Assert.Equal(8, _scoringCalculator.CalculateFourOfAKindScore(playerDiceRoll));
         }
+        
+        [Fact]
+        public void given_playerDiceRollEquals1_2_3_4_5_and_categoryEqualsSmallStraight_when_CalculateStraightScore_then_return_15()
+        {
+            List<int> playerDiceRoll = new List<int>() {1, 2, 3, 4, 5};
+            Assert.Equal(15, _scoringCalculator.CalculateStraightScore(playerDiceRoll, "smallStraight"));
+        }
+        
+        [Fact]
+        public void given_playerDiceRollEquals2_3_4_5_6_and_categoryEqualsLargeStraight_when_CalculateStraightScore_then_return_20()
+        {
+            List<int> playerDiceRoll = new List<int>() {2, 3, 4, 5, 6};
+            Assert.Equal(20, _scoringCalculator.CalculateStraightScore(playerDiceRoll, "largeStraight"));
+        }
     }    
 }

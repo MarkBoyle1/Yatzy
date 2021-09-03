@@ -89,5 +89,26 @@ namespace Yatzy
 
             return 0;
         }
+        
+        public int CalculateStraightScore(List<int> diceRoll, string category)
+        {
+            if (CheckForStraight(diceRoll, 1) && category == "largeStraight")
+            {
+                return 20;
+            }
+            else if (CheckForStraight(diceRoll, 6) && category == "smallStraight")
+            {
+                return 15;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public bool CheckForStraight(List<int> diceRoll, int missingNumber)
+        {
+            return (diceRoll.Distinct().Count() == 5 && !diceRoll.Contains(missingNumber));
+        }
     }
 }
