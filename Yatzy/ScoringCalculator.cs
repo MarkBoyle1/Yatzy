@@ -77,5 +77,17 @@ namespace Yatzy
 
             return 0;
         }
+        
+        public int CalculateFourOfAKindScore(List<int> diceRoll)
+        {
+            var groupings = diceRoll.GroupBy(number => number);
+            foreach (var value in groupings)
+            {
+                if(value.Count() > 3)
+                    return value.Key * 4;
+            }
+
+            return 0;
+        }
     }
 }
