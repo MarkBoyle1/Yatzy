@@ -7,12 +7,7 @@ namespace Yatzy
     {
         public int CalculateChanceScore(List<int> diceRoll)
         {
-            int score = 0;
-            foreach (int dice in diceRoll)
-            {
-                score += dice;
-            }
-            return score;
+            return diceRoll.Sum();
         }
 
         //Returns 50 only if all the numbers are the same.
@@ -55,55 +50,42 @@ namespace Yatzy
 
         private List<int> CollectDuplicateNumbers(List<int> diceRoll)
         {
-            List<int> pairs = new List<int>();
-            var groupings = GroupTogetherNumbers(diceRoll);
-            foreach (var value in groupings)
-            {
-                if(value.Count() > 1)
-                    pairs.Add(value.Key);
-            }
-
-            return pairs;
+            return GroupTogetherNumbers(diceRoll)
+                .Where(group => group.Count() > 1)
+                .Select(dice => dice.Key)
+                .ToList();
+        }
+        
+        public IEnumerable<IGrouping<int, int>> GroupTogetherNumbers(List<int> diceRoll)
+        {
+            return diceRoll.GroupBy(number => number);
         }
 
-        public int CalculateThreeOfAKindScore(List<int> diceRoll)
+        public int CalculateThreeOrFourOfAKindScore(List<int> diceRoll, int category)
         {
             var groupings = GroupTogetherNumbers(diceRoll);
             foreach (var value in groupings)
             {
-                if(value.Count() > 2)
-                    return value.Key * 3;
+                if(value.Count() >= category)
+                    return value.Key * category;
             }
-
+            
             return 0;
         }
-        
-        public int CalculateFourOfAKindScore(List<int> diceRoll)
-        {
-            var groupings = GroupTogetherNumbers(diceRoll);
-            foreach (var value in groupings)
-            {
-                if(value.Count() > 3)
-                    return value.Key * 4;
-            }
 
-            return 0;
-        }
-        
         public int CalculateStraightScore(List<int> diceRoll, string category)
         {
             if (CheckForStraight(diceRoll, 1) && category == "largeStraight")
             {
                 return 20;
             }
-            else if (CheckForStraight(diceRoll, 6) && category == "smallStraight")
+            
+            if (CheckForStraight(diceRoll, 6) && category == "smallStraight")
             {
                 return 15;
             }
-            else
-            {
-                return 0;
-            }
+            
+            return 0;
         }
 
         public bool CheckForStraight(List<int> diceRoll, int missingNumber)
@@ -118,11 +100,6 @@ namespace Yatzy
                 return diceRoll.Sum();
             
             return 0;
-        }
-
-        public IEnumerable<IGrouping<int, int>> GroupTogetherNumbers(List<int> diceRoll)
-        {
-            return diceRoll.GroupBy(number => number);
         }
     }
 }

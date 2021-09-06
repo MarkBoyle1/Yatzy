@@ -78,45 +78,45 @@ namespace Yatzy.Tests
         }
         
         [Fact]
-        public void given_playerDiceRollEquals3_3_3_4_5_when_CalculateThreeOfAKindScore_then_return_9()
+        public void given_playerDiceRollEquals3_3_3_4_5_when_CalculateThreeOrFourOfAKindScore_then_return_9()
         {
             List<int> playerDiceRoll = new List<int>() {3, 3, 3, 4, 5};
-            Assert.Equal(9, _scoringCalculator.CalculateThreeOfAKindScore(playerDiceRoll));
+            Assert.Equal(9, _scoringCalculator.CalculateThreeOrFourOfAKindScore(playerDiceRoll, 3));
         }
         
         [Fact]
-        public void given_playerDiceRollEquals3_3_4_5_6_when_CalculateThreeOfAKindScore_then_return_0()
+        public void given_playerDiceRollEquals3_3_4_5_6_when_CalculateThreeOrFourOfAKindScore_then_return_0()
         {
             List<int> playerDiceRoll = new List<int>() {3, 3, 4, 5, 6};
-            Assert.Equal(0, _scoringCalculator.CalculateThreeOfAKindScore(playerDiceRoll));
+            Assert.Equal(0, _scoringCalculator.CalculateThreeOrFourOfAKindScore(playerDiceRoll,3));
         }
         
         [Fact]
-        public void given_playerDiceRollEquals3_3_3_3_1_when_CalculateThreeOfAKindScore_then_return_9()
+        public void given_playerDiceRollEquals3_3_3_3_1_when_CalculateThreeOrFourOfAKindScore_then_return_9()
         {
             List<int> playerDiceRoll = new List<int>() {3, 3, 3, 3, 1};
-            Assert.Equal(9, _scoringCalculator.CalculateThreeOfAKindScore(playerDiceRoll));
+            Assert.Equal(9, _scoringCalculator.CalculateThreeOrFourOfAKindScore(playerDiceRoll,3));
         }
         
         [Fact]
-        public void given_playerDiceRollEquals2_2_2_2_5_when_CalculateFourOfAKindScore_then_return_8()
+        public void given_playerDiceRollEquals2_2_2_2_5_when_CalculateThreeOrFourOfAKindScore_then_return_8()
         {
             List<int> playerDiceRoll = new List<int>() {2, 2, 2, 2, 5};
-            Assert.Equal(8, _scoringCalculator.CalculateFourOfAKindScore(playerDiceRoll));
+            Assert.Equal(8, _scoringCalculator.CalculateThreeOrFourOfAKindScore(playerDiceRoll,4));
         }
         
         [Fact]
         public void given_playerDiceRollEquals2_2_2_5_5_when_CalculateFourOfAKindScore_then_return_0()
         {
             List<int> playerDiceRoll = new List<int>() {2, 2, 2, 5, 5};
-            Assert.Equal(0, _scoringCalculator.CalculateFourOfAKindScore(playerDiceRoll));
+            Assert.Equal(0, _scoringCalculator.CalculateThreeOrFourOfAKindScore(playerDiceRoll,4));
         }
         
         [Fact]
-        public void given_playerDiceRollEquals2_2_2_2_2_when_CalculateFourOfAKindScore_then_return_8()
+        public void given_playerDiceRollEquals2_2_2_2_2_when_CalculateThreeOrFourOfAKindScore_then_return_8()
         {
             List<int> playerDiceRoll = new List<int>() {2, 2, 2, 2, 2};
-            Assert.Equal(8, _scoringCalculator.CalculateFourOfAKindScore(playerDiceRoll));
+            Assert.Equal(8, _scoringCalculator.CalculateThreeOrFourOfAKindScore(playerDiceRoll,4));
         }
         
         [Fact]
