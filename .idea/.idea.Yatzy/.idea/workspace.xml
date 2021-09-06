@@ -4,10 +4,14 @@
     <projectFile>Yatzy/Yatzy.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="583bf5dd-24ec-4937-a134-cfa265e23891" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Yatzy.Tests/DiceRollTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Yatzy/DiceRoll.cs" afterDir="false" />
+    <list default="true" id="583bf5dd-24ec-4937-a134-cfa265e23891" name="Changes" comment="Generates 6 random numbers for the dice roll.">
+      <change afterPath="$PROJECT_DIR$/Yatzy.Tests/UserInputTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Yatzy/Output.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Yatzy/UserInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Yatzy/YatzyGameplay.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Yatzy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Yatzy/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy.Tests/DiceRollTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy.Tests/DiceRollTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/DiceRoll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/DiceRoll.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,6 +45,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="full.screen.before.presentation.mode" value="false" />
     <property name="settings.editor.selected.configurable" value="configurable.group.build" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -139,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630649379887</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Generates 6 random numbers for the dice roll.">
+      <created>1630903241240</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1630903241240</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +183,7 @@
     <MESSAGE value="Can calculate score for four of a kind" />
     <MESSAGE value="Can calculate score for small and large straight" />
     <MESSAGE value="Can calculate a score for full house." />
-    <option name="LAST_COMMIT_MESSAGE" value="Can calculate a score for full house." />
+    <MESSAGE value="Generates 6 random numbers for the dice roll." />
+    <option name="LAST_COMMIT_MESSAGE" value="Generates 6 random numbers for the dice roll." />
   </component>
 </project>

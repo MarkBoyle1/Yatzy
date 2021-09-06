@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Yatzy
 {
@@ -6,8 +7,7 @@ namespace Yatzy
     {
         static void Main(string[] args)
         {
-            DiceRoll rolledDice = new DiceRoll();
-            Console.WriteLine(rolledDice.RollDice());
+           
         }
     }
 }
