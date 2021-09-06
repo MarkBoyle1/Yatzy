@@ -6,7 +6,8 @@ namespace Yatzy
     {
         static void Main(string[] args)
         {
-            
+            DiceRoll rolledDice = new DiceRoll();
+            Console.WriteLine(rolledDice.RollDice());
         }
     }
 }
