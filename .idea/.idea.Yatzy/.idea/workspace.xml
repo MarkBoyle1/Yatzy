@@ -4,15 +4,17 @@
     <projectFile>Yatzy/Yatzy.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="583bf5dd-24ec-4937-a134-cfa265e23891" name="Changes" comment="Generates 6 random numbers for the dice roll.">
-      <change afterPath="$PROJECT_DIR$/Yatzy.Tests/UserInputTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Yatzy/Output.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Yatzy/UserInput.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Yatzy/YatzyGameplay.cs" afterDir="false" />
+    <list default="true" id="583bf5dd-24ec-4937-a134-cfa265e23891" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Yatzy/IUserInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Yatzy/TestUserInput.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Yatzy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Yatzy/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy.Tests/DiceRollTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy.Tests/DiceRollTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy.Tests/UserInputTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy.Tests/UserInputTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/DiceRoll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/DiceRoll.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/Output.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/Output.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/UserInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/UserInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/YatzyGameplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/YatzyGameplay.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,12 +29,21 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/DiceRoll.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1xVqt25cNYoy3GDKpUOdZxqL6No" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -46,7 +57,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -151,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630903241240</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Can remove a number from dice roll list.">
+      <created>1630927045556</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1630927045556</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,6 +202,7 @@
     <MESSAGE value="Can calculate score for small and large straight" />
     <MESSAGE value="Can calculate a score for full house." />
     <MESSAGE value="Generates 6 random numbers for the dice roll." />
-    <option name="LAST_COMMIT_MESSAGE" value="Generates 6 random numbers for the dice roll." />
+    <MESSAGE value="Can remove a number from dice roll list." />
+    <option name="LAST_COMMIT_MESSAGE" value="Can remove a number from dice roll list." />
   </component>
 </project>

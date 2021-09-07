@@ -9,7 +9,7 @@ namespace Yatzy
         private Random random = new Random();
         public List<int> RollDice(List<int> diceRoll)
         {
-            while (diceRoll.Count() < 6)
+            while (diceRoll.Count() < 5)
             {
                 diceRoll.Add(random.Next(1,6));
             }

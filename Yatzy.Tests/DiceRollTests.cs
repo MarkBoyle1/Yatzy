@@ -11,7 +11,7 @@ namespace Yatzy.Tests
         {
             List<int> rolledDice = new List<int>();
             rolledDice = _diceRoll.RollDice(rolledDice);
-            Assert.Equal(6, rolledDice.Count);
+            Assert.Equal(5, rolledDice.Count);
         }
         
         [Fact]

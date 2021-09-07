@@ -17,15 +17,18 @@ namespace Yatzy
 
         public void DisplayDiceRoll(List<int> diceRoll)
         {
+            Console.WriteLine("Your current dice combo is:");
             foreach (int dice in diceRoll)
             {
-                Console.WriteLine(dice);
+                Console.Write(dice + " ");
             }
+
+            Console.WriteLine();
         }
 
-        public void AskToRemoveNumberOrPickScoringCategory()
+        public void AskToRemoveNumber()
         {
-            Console.WriteLine("Would you like to remove a number or pick a scoring category: (Remove number = 1, Pick Category = 2");
+            Console.WriteLine("Would you like to remove a number: (Yes = 0, No = 1");
         }
     }
 }
