@@ -4,7 +4,7 @@ namespace Yatzy
 {
     public interface IUserInput
     {
-        int GetNumberToRemove(List<int> diceRoll);
+        int CheckIfNumberToRemoveExists(List<int> diceCombo, int numberToRemove);
 
         bool GetDecisionToRemoveNumber();
 

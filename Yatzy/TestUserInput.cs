@@ -5,14 +5,20 @@ namespace Yatzy
     public class TestUserInput : IUserInput
     {
         private DiceRoll _diceRoll = new DiceRoll();
-        public int GetNumberToRemove(List<int> diceRoll)
+        private bool isRemovingNumber;
+
+        public TestUserInput(bool isRemovingNumber)
         {
-            return diceRoll[0];
+            this.isRemovingNumber = isRemovingNumber;
+        }
+        public int CheckIfNumberToRemoveExists(List<int> diceCombo, int numberToRemove)
+        {
+            return numberToRemove;
         }
 
         public bool GetDecisionToRemoveNumber()
         {
-            return false;
+            return isRemovingNumber;
         }
 
         public List<int> RemoveChosenNumbers(List<int> diceCombo)
@@ -23,7 +29,7 @@ namespace Yatzy
             {
                 if (diceCombo.Count > 0)
                 {
-                    int numberToRemove = GetNumberToRemove(diceCombo);
+                    int numberToRemove = CheckIfNumberToRemoveExists(diceCombo, diceCombo[0]);
                     diceCombo = _diceRoll.RemoveNumberFromDiceRoll( diceCombo, numberToRemove);
                     stillRemoving = GetDecisionToRemoveNumber();
                 }

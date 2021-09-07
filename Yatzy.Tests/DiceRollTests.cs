@@ -26,11 +26,19 @@ namespace Yatzy.Tests
         }
         
         [Fact]
-        public void given_DiceRollEquals1_4_5_6_2_when_RemoveNumberFromDiceRoll_5IsSelected_then_return_2_4_6_2()
+        public void given_DiceRollEquals2_4_5_6_2_when_RemoveNumberFromDiceRoll_FiveIsSelected_then_return_2_4_6_2()
         {
-            List<int> diceRoll = new List<int>() {2, 4, 5, 6, 2};
+            List<int> diceCombo = new List<int>() {2, 4, 5, 6, 2};
             List<int> expected = new List<int>() {2, 4, 6, 2};
-            Assert.Equal(expected, _diceRoll.RemoveNumberFromDiceRoll(diceRoll, 5));
+            Assert.Equal(expected, _diceRoll.RemoveNumberFromDiceRoll(diceCombo, 5));
+        }
+        
+        [Fact]
+        public void given_DiceRollEquals2_4_5_6_2_when_RemoveNumberFromDiceRoll_TwoIsSelected_then_return_4_5_6_2()
+        {
+            List<int> diceCombo = new List<int>() {2, 4, 5, 6, 2};
+            List<int> expected = new List<int>() {4, 5, 6, 2};
+            Assert.Equal(expected, _diceRoll.RemoveNumberFromDiceRoll(diceCombo, 2));
         }
     }
 }

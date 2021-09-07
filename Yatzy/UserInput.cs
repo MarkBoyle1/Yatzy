@@ -9,42 +9,35 @@ namespace Yatzy
         private Output _output = new Output();
         private DiceRoll _diceRoll = new DiceRoll();
 
-        public int GetNumberToRemove(List<int> diceRoll)
+        public int CheckIfNumberToRemoveExists(List<int> diceCombo, int numberToRemove)
         {
-            _output.AskUserForNumberToRemove();
-                string numberToRemove = "0";
-                _output.DisplayDiceRoll(diceRoll);
 
-                do
-                {
-                    numberToRemove = Console.ReadLine();
+            while (!diceCombo.Contains(numberToRemove))
+            {
+                numberToRemove = _output.InvalidNumberMessage();
+            }
 
-                    if (!diceRoll.Contains(Convert.ToInt32(numberToRemove)))
-                    {
-                        _output.InvalidNumberMessage();
-                    }
-                
-                } while (!diceRoll.Contains(Convert.ToInt32(numberToRemove)));
-                
-                return Convert.ToInt32(numberToRemove);
+            return numberToRemove;
         }
-        
+
         public bool GetDecisionToRemoveNumber()
         {
-            _output.AskToRemoveNumber();
-            string response = Console.ReadLine();
-
-            if (response == "0")
+            while (true)
             {
-                return true;
-            }
+                string response = _output.GetResponseToRemoveNumber();
+
+                if (response == "0")
+                {
+                    return false;
+                }
             
-            if (response == "1")
-            {
-                return false;
-            }
+                if (response == "1")
+                {
+                    return true;
+                }
 
-            return true;
+                _output.InvalidResponseMessage();
+            }
         }
 
         public List<int> RemoveChosenNumbers(List<int> diceCombo)
@@ -56,7 +49,8 @@ namespace Yatzy
                 //Individual numbers will be selected and removed from the dice combo.
                 if (diceCombo.Count > 0)
                 {
-                    int numberToRemove = GetNumberToRemove(diceCombo);
+                    int numberToRemove = _output.GetNumberToRemove();
+                    numberToRemove = CheckIfNumberToRemoveExists(diceCombo, numberToRemove);
                     diceCombo = _diceRoll.RemoveNumberFromDiceRoll( diceCombo, numberToRemove);
                     _output.DisplayDiceRoll(diceCombo);
                     stillRemoving = GetDecisionToRemoveNumber();

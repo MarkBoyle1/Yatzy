@@ -7,20 +7,20 @@ namespace Yatzy
     public class DiceRoll
     {
         private Random random = new Random();
-        public List<int> RollDice(List<int> diceRoll)
+        public List<int> RollDice(List<int> diceCombo)
         {
-            while (diceRoll.Count() < 5)
+            while (diceCombo.Count() < 5)
             {
-                diceRoll.Add(random.Next(1,6));
+                diceCombo.Add(random.Next(1,7));
             }
 
-            return diceRoll;
+            return diceCombo;
         }
         
-        public List<int> RemoveNumberFromDiceRoll(List<int> diceRoll, int numberToRemove)
+        public List<int> RemoveNumberFromDiceRoll(List<int> diceCombo, int numberToRemove)
         {
-            diceRoll.Remove(numberToRemove);
-            return diceRoll;
+            diceCombo.Remove(numberToRemove);
+            return diceCombo;
         }
     }
 }

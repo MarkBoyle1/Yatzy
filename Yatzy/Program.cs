@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿
 namespace Yatzy
 {
     public class Program
@@ -9,7 +7,6 @@ namespace Yatzy
         {
             YatzyGameplay gameplay = new YatzyGameplay(new UserInput());
             gameplay.UserAction();
-
         }
     }
 }

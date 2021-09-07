@@ -73,14 +73,14 @@ namespace Yatzy
             return 0;
         }
 
-        public int CalculateStraightScore(List<int> diceRoll, string category)
+        public int CalculateStraightScore(List<int> diceRoll, int category)
         {
-            if (CheckForStraight(diceRoll, 1) && category == "largeStraight")
+            if (CheckForStraight(diceRoll, 1) && category == 12)
             {
                 return 20;
             }
             
-            if (CheckForStraight(diceRoll, 6) && category == "smallStraight")
+            if (CheckForStraight(diceRoll, 6) && category == 11)
             {
                 return 15;
             }
