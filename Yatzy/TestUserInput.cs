@@ -1,45 +1,23 @@
-using System.Collections.Generic;
 
 namespace Yatzy
 {
     public class TestUserInput : IUserInput
     {
         private DiceRoll _diceRoll = new DiceRoll();
-        private bool isRemovingNumber;
+        private int number;
 
-        public TestUserInput(bool isRemovingNumber)
+        public TestUserInput(int number)
         {
-            this.isRemovingNumber = isRemovingNumber;
+            this.number = number;
         }
-        public int CheckIfNumberToRemoveExists(List<int> diceCombo, int numberToRemove)
+        public int GetUserResponse()
         {
-            return numberToRemove;
-        }
-
-        public bool GetDecisionToRemoveNumber()
-        {
-            return isRemovingNumber;
+            return number;
         }
 
-        public List<int> RemoveChosenNumbers(List<int> diceCombo)
+        public int EnsureNumberIsValid(string response)
         {
-            bool stillRemoving = true;
-
-            while (stillRemoving)
-            {
-                if (diceCombo.Count > 0)
-                {
-                    int numberToRemove = CheckIfNumberToRemoveExists(diceCombo, diceCombo[0]);
-                    diceCombo = _diceRoll.RemoveNumberFromDiceRoll( diceCombo, numberToRemove);
-                    stillRemoving = GetDecisionToRemoveNumber();
-                }
-                else
-                {
-                    stillRemoving = false;
-                }
-            }
-
-            return diceCombo;
+            return number;
         }
     }
 }

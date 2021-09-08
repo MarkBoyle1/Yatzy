@@ -6,7 +6,7 @@ namespace Yatzy
         static void Main(string[] args)
         {
             YatzyGameplay gameplay = new YatzyGameplay(new UserInput());
-            gameplay.UserAction();
+            gameplay.PickGameMode();
         }
     }
 }

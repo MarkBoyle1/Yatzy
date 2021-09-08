@@ -7,24 +7,13 @@ namespace Yatzy.Tests
     {
         private DiceRoll _diceRoll = new DiceRoll();
         [Fact]
-        public void when_RollDice_then_return_ListOfSixNumbers()
+        public void when_RollDice_then_return_ListOfFiveNumbers()
         {
             List<int> rolledDice = new List<int>();
             rolledDice = _diceRoll.RollDice(rolledDice);
             Assert.Equal(5, rolledDice.Count);
         }
-        
-        [Fact]
-        public void when_RollDiceIsCalledTwice_then_return_DifferentListsOfSixNumbers()
-        {
-            List<int> rolledDice = new List<int>();
-            rolledDice = _diceRoll.RollDice(rolledDice);
-            List<int> secondRolledDice = new List<int>();
-            secondRolledDice = _diceRoll.RollDice(secondRolledDice);
-            
-            Assert.True(rolledDice != secondRolledDice);
-        }
-        
+
         [Fact]
         public void given_DiceRollEquals2_4_5_6_2_when_RemoveNumberFromDiceRoll_FiveIsSelected_then_return_2_4_6_2()
         {
