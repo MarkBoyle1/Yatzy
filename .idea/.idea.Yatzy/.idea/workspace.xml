@@ -4,15 +4,12 @@
     <projectFile>Yatzy/Yatzy.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="583bf5dd-24ec-4937-a134-cfa265e23891" name="Changes" comment="Single Player Game Complete">
-      <change afterPath="$PROJECT_DIR$/Yatzy/HumanPlayer.cs" afterDir="false" />
+    <list default="true" id="583bf5dd-24ec-4937-a134-cfa265e23891" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Yatzy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Yatzy/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy.Tests/DiceRollTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy.Tests/DiceRollTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy.Tests/UserInputTests.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy.Tests/YatzyGameplayTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy.Tests/YatzyGameplayTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/HumanPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/HumanPlayer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/IUserInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/IUserInput.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/Output.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/Output.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/ScoringCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/ScoringCalculator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/TestUserInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/TestUserInput.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/UserInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/UserInput.cs" afterDir="false" />
@@ -42,6 +39,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/DiceRoll.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy.Tests/DiceRollTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/DiceRoll.cs" root0="SKIP_HIGHLIGHTING" />
@@ -187,7 +185,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631056829842</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Refactored Single Player Game and added ability to play another human.">
+      <created>1631143258278</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1631143258278</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,6 +228,7 @@
     <MESSAGE value="Can remove a number from dice roll list." />
     <MESSAGE value="User can select numbers to remove, and re-roll up to 2 times." />
     <MESSAGE value="Single Player Game Complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Single Player Game Complete" />
+    <MESSAGE value="Refactored Single Player Game and added ability to play another human." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored Single Player Game and added ability to play another human." />
   </component>
 </project>

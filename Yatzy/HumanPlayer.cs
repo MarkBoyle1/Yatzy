@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,6 +13,25 @@ namespace Yatzy
         public int totalScore = 0;
         List<int> diceCombo = new List<int>();
         private Output _output = new Output();
+        
+        enum ScoringCategories
+        {
+            Chance,
+            Ones,
+            Twos,
+            Threes,
+            Fours,
+            Fives,
+            Sixes,
+            Pair,
+            TwoPairs,
+            ThreeOfAKind,
+            FourOfAKind,
+            SmallStraight,
+            LargeStraight,
+            FullHouse,
+            Yatzy
+        }
 
         public void PlayAllRoundsInOneGo()
         {
@@ -32,7 +52,7 @@ namespace Yatzy
             _output.DisplayDiceRoll(diceCombo);
 
             int category = PickCategory();
-            int roundScore = _calculator.CalculateScore(diceCombo, category);
+            int roundScore = _calculator.CalculateScore(diceCombo, Enum.GetName(typeof(ScoringCategories), category));
             totalScore += roundScore;
             _output.DisplayCurrentScore(totalScore, roundScore);
             diceCombo.Clear();
@@ -118,7 +138,7 @@ namespace Yatzy
         
         public int PickCategory()
         {
-            _output.DisplayCategorySelectionMessage(scoringCategories);
+            _output.DisplayCategorySelectionMessage(new ScoringCategories());
             int category = _userInput.GetUserResponse();
             category = CheckCategoryExists(category);
             scoringCategories.Remove(category);

@@ -23,5 +23,10 @@ namespace Yatzy
 
             return Convert.ToInt32(response);
         }
+
+        public string GetPlayerName()
+        {
+            return Console.ReadLine();
+        }
     }
 }

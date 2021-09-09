@@ -7,5 +7,7 @@ namespace Yatzy
         int GetUserResponse();
 
         int EnsureNumberIsValid(string response);
+
+        string GetPlayerName();
     }
 }

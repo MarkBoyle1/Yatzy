@@ -5,25 +5,6 @@ namespace Yatzy
 {
     public class Output
     {
-        enum ScoringCategories
-        {
-            Chance,
-            Ones,
-            Twos,
-            Threes,
-            Fours,
-            Fives,
-            Sixes,
-            Pair,
-            TwoPairs,
-            ThreeOfAKind,
-            FourOfAKind,
-            SmallStraight,
-            LargeStraight,
-            FullHouse,
-            Yatzy
-        }
-        
         public void DisplayNumberToRemoveMessage()
         {
             Console.WriteLine("What number would you like to remove:");
@@ -52,11 +33,8 @@ namespace Yatzy
         public void DisplayDiceRoll(List<int> diceCombo)
         {
             Console.WriteLine("Your current dice combo is:");
-            foreach (int dice in diceCombo)
-            {
-                Console.Write(dice + " ");
-            }
-            Console.WriteLine();
+
+            Console.WriteLine(String.Join(" ", diceCombo.ToArray()));
         }
 
         public void DisplayDecisionToRemoveNumberMessage()
@@ -64,12 +42,13 @@ namespace Yatzy
             Console.WriteLine("Would you like to remove a number: (No = 0, Yes = 1)");
         }
 
-        public void DisplayCategorySelectionMessage(List<int> remainingCategories)
+        public void DisplayCategorySelectionMessage(Enum scoringCategories)
         {
+
             Console.WriteLine("Please select a scoring category:");
-            foreach(int category in remainingCategories)
+            foreach(int category in Enum.GetValues(scoringCategories.GetType()))
             {
-                Console.WriteLine("{0} = {1}", (ScoringCategories)category, category );
+                Console.WriteLine(Enum.GetName(scoringCategories.GetType(), category) + " = " + category);
             }
         }
         
@@ -89,9 +68,9 @@ namespace Yatzy
             Console.WriteLine("\n{0}'s turn:", playerName);
         }
 
-        public void DisplayEndResults(int player1Score, int player2Score)
+        public void DisplayEndResults(string player1Name, int player1Score, string player2Name, int player2Score)
         {
-            Console.WriteLine("\nPlayer1 score: {0} \nPlayer2 score: {1}", player1Score, player2Score);
+            Console.WriteLine("\n{0}'s score: {1} \n{2}'s score: {3}", player1Name, player1Score, player2Name, player2Score);
         }
 
         public void DisplayPickGameModeMessage()
@@ -105,6 +84,11 @@ namespace Yatzy
         public void InvalidGameModeSelectionMessage()
         {
             Console.WriteLine("Invalid response. Please enter a 0, 1 or 2:");
+        }
+
+        public void DisplayGetPlayerNameMessage(string player)
+        {
+            Console.WriteLine("Please enter the name for {0}:", player);
         }
     }
 }
