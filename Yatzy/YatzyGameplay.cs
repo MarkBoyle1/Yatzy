@@ -14,28 +14,59 @@ namespace Yatzy
             this._userInput = userInput;
         }
 
-        public void AddPlayers()
+        public int GetNumberOfPlayers()
         {
-            playerList.Add(new HumanPlayer());
-            playerList.Add(new HumanPlayer());
+            _output.DisplayPlayerNumberSelectionMessage();
+            int numberOfPlayers = _userInput.GetUserResponse();
+
+            while(numberOfPlayers < 1)
+            {
+                _output.PleaseEnterValidNumberMessage();
+                numberOfPlayers = _userInput.GetUserResponse();
+            }
+
+            return numberOfPlayers;
+        }
+        
+        public void AddPlayers(int numberOfPlayers)
+        {
+            for (int i = 1; i <= numberOfPlayers; i++)
+            {
+                string playerName = GetPlayerName(i);
+                playerList.Add(new HumanPlayer(playerName));
+            }
         }
 
-        public void PickGameMode()
+        public string GetPlayerName(int playerNumber)
         {
-            AddPlayers();
+            _output.GetPlayerNameMessage(playerNumber);
+            return _userInput.GetPlayerName();
+        }
+
+        public void SetUpGame()
+        {
+            int numberOfPlayers = GetNumberOfPlayers();
+            AddPlayers(numberOfPlayers);
+
+            if (numberOfPlayers == 1)
+            {
+                IGameMode singlePlayer = new SinglePlayerMode();
+                singlePlayer.StartGame(playerList);
+            }
+            else
+            {
+                SelectGameModeForMultiplePlayers();
+            }
+        }
+
+        public void SelectGameModeForMultiplePlayers()
+        {
             _output.DisplayPickGameModeMessage();
 
             while (true)
             {
                 int response = _userInput.GetUserResponse();
 
-                if (response == 0)
-                {
-                    IGameMode singlePlayer = new SinglePlayerMode();
-                    singlePlayer.StartGame(playerList);
-                    break;
-                }
-            
                 if (response == 1)
                 {
                     IGameMode allRoundsInOneGo = new AllRoundsInOneGoMode();

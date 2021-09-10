@@ -24,5 +24,7 @@ namespace Yatzy
 
        int GetNumberOfRemainingCategories();
 
+       string GetPlayerName();
+
     }
 }

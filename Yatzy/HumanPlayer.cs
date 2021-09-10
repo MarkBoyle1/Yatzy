@@ -13,6 +13,12 @@ namespace Yatzy
         public int totalScore = 0;
         List<int> diceCombo = new List<int>();
         private Output _output = new Output();
+        public string playerName;
+
+        public HumanPlayer(string playerName)
+        {
+            this.playerName = playerName;
+        }
         
         enum ScoringCategories
         {
@@ -164,6 +170,11 @@ namespace Yatzy
         public int GetNumberOfRemainingCategories()
         {
             return remainingCategories.Count;
+        }
+
+        public string GetPlayerName()
+        {
+            return playerName;
         }
     }
 }

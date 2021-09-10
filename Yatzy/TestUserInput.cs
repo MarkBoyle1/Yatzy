@@ -19,5 +19,10 @@ namespace Yatzy
         {
             return number;
         }
+
+        public string GetPlayerName()
+        {
+            return "Test";
+        }
     }
 }

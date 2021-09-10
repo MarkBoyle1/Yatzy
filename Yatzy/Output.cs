@@ -68,23 +68,35 @@ namespace Yatzy
             Console.WriteLine("\n{0}'s turn:", playerName);
         }
 
-        public void DisplayEndResults(string player1Name, int player1Score, string player2Name, int player2Score)
+        public void DisplayEndResults(string playerName, int playerScore)
         {
-            Console.WriteLine("\n{0}'s score: {1} \n{2}'s score: {3}", player1Name, player1Score, player2Name, player2Score);
+            Console.WriteLine("{0}'s score: {1}", playerName, playerScore);
         }
 
         public void DisplayPickGameModeMessage()
         {
             Console.WriteLine("Please select the game mode:");
-            Console.WriteLine("Single Player Game = 0" +
-                              "\nTwo Players All Rounds in one go = 1" +
-                              "\nTwo Players Taking Turns = 2");
+            Console.WriteLine("All Rounds in one go = 1" + "\nTaking Turns = 2");
         }
         
         public void InvalidGameModeSelectionMessage()
         {
             Console.WriteLine("Invalid response. Please enter a 0, 1 or 2:");
         }
-        
+
+        public void DisplayPlayerNumberSelectionMessage()
+        {
+            Console.WriteLine("Please select the number of players:");
+        }
+
+        public void GetPlayerNameMessage(int playerNumber)
+        {
+            Console.WriteLine($"Please select the name for player {playerNumber}:");
+        }
+
+        public void DisplayInvalidNameMessage()
+        {
+            Console.WriteLine("Please enter a response:");
+        }
     }
 }

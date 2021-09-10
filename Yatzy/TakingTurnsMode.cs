@@ -10,17 +10,20 @@ namespace Yatzy
         {
             while(playerList[0].GetNumberOfRemainingCategories() > 0)
             {
-                _output.CurrentPlayersTurnMessage("Player 1");
-                playerList[0].PlayOneRound();
-                
-                _output.CurrentPlayersTurnMessage("Player 2");
-                playerList[1].PlayOneRound();
+                foreach (IPlayer player in playerList)
+                {
+                    string playerName = player.GetPlayerName();
+                    _output.CurrentPlayersTurnMessage(playerName);
+                    player.PlayOneRound();
+                }
             }
 
-            int player1Score = playerList[0].GetTotalScore();
-            int player2Score = playerList[1].GetTotalScore();
-
-            _output.DisplayEndResults("PLayer 1", player1Score, "Player 2", player2Score);
+            foreach (IPlayer player in playerList)
+            {
+                string playerName = player.GetPlayerName();
+                int playerScore = player.GetTotalScore();
+                _output.DisplayEndResults(playerName, playerScore);
+            }
         }
     }
 }
