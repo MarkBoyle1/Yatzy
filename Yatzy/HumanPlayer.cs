@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace Yatzy
 {
-    public class HumanPlayer
+    public class HumanPlayer : IPlayer
     {
         private IUserInput _userInput = new UserInput();
         private DiceRoll _diceRoll = new DiceRoll();
-        public List<int> scoringCategories = new List<int>(Enumerable.Range(0,15).ToList());
+        public List<int> remainingCategories = new List<int>(Enumerable.Range(0,15).ToList());
         private ScoringCalculator _calculator = new ScoringCalculator();
         public int totalScore = 0;
         List<int> diceCombo = new List<int>();
@@ -35,7 +35,7 @@ namespace Yatzy
 
         public void PlayAllRoundsInOneGo()
         {
-            while (scoringCategories.Count > 0)
+            while (remainingCategories.Count > 0)
             {
                 PlayOneRound();
             }
@@ -138,22 +138,32 @@ namespace Yatzy
         
         public int PickCategory()
         {
-            _output.DisplayCategorySelectionMessage(new ScoringCategories());
+            _output.DisplayCategorySelectionMessage(new ScoringCategories(), remainingCategories);
             int category = _userInput.GetUserResponse();
             category = CheckCategoryExists(category);
-            scoringCategories.Remove(category);
+            remainingCategories.Remove(category);
             return category;
         }
 
-        private int CheckCategoryExists(int category)
+        public int CheckCategoryExists(int category)
         {
-            while (!scoringCategories.Contains(category))
+            while (!remainingCategories.Contains(category))
             {
                 _output.InvalidCategoryMessage();
                 category = _userInput.GetUserResponse();
             }
 
             return category;
+        }
+
+        public int GetTotalScore()
+        {
+            return totalScore;
+        }
+
+        public int GetNumberOfRemainingCategories()
+        {
+            return remainingCategories.Count;
         }
     }
 }

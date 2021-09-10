@@ -42,11 +42,11 @@ namespace Yatzy
             Console.WriteLine("Would you like to remove a number: (No = 0, Yes = 1)");
         }
 
-        public void DisplayCategorySelectionMessage(Enum scoringCategories)
+        public void DisplayCategorySelectionMessage(Enum scoringCategories, List<int> remaingingCategories)
         {
 
             Console.WriteLine("Please select a scoring category:");
-            foreach(int category in Enum.GetValues(scoringCategories.GetType()))
+            foreach(int category in remaingingCategories)
             {
                 Console.WriteLine(Enum.GetName(scoringCategories.GetType(), category) + " = " + category);
             }
@@ -85,10 +85,6 @@ namespace Yatzy
         {
             Console.WriteLine("Invalid response. Please enter a 0, 1 or 2:");
         }
-
-        public void DisplayGetPlayerNameMessage(string player)
-        {
-            Console.WriteLine("Please enter the name for {0}:", player);
-        }
+        
     }
 }
