@@ -4,10 +4,22 @@
     <projectFile>Yatzy/Yatzy.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="583bf5dd-24ec-4937-a134-cfa265e23891" name="Changes" comment="Can calculate a score for full house.">
+    <list default="true" id="583bf5dd-24ec-4937-a134-cfa265e23891" name="Changes" comment="Can add any number of players.">
+      <change afterPath="$PROJECT_DIR$/Yatzy/MulitPlayerGameModes.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Yatzy/ScoringCategories.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Yatzy/Validations.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Yatzy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Yatzy/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy.Tests/ScoringTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy.Tests/ScoringTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy.Tests/YatzyGameplayTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy.Tests/YatzyGameplayTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/AllRoundsInOneGoMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/AllRoundsInOneGoMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/HumanPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/HumanPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/IPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/IPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/IUserInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/IUserInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/Output.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/Output.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/ScoringCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/ScoringCalculator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/TakingTurnsMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/TakingTurnsMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/TestUserInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/TestUserInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/UserInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/UserInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/YatzyGameplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/YatzyGameplay.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,11 +34,26 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/HumanPlayer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/DiceRoll.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy.Tests/DiceRollTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/DiceRoll.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/AllRoundsInOneGoMode.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/DiceRoll.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1xVqt25cNYoy3GDKpUOdZxqL6No" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -39,10 +66,11 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Project.Yatzy">
+  <component name="RunManager">
     <configuration name="Yatzy" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -137,7 +165,63 @@
       <option name="project" value="LOCAL" />
       <updated>1630649379887</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Generates 6 random numbers for the dice roll.">
+      <created>1630903241240</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1630903241240</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Can remove a number from dice roll list.">
+      <created>1630927045556</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1630927045556</updated>
+    </task>
+    <task id="LOCAL-00012" summary="User can select numbers to remove, and re-roll up to 2 times.">
+      <created>1630986728421</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1630986728422</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Single Player Game Complete">
+      <created>1631056829842</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1631056829842</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Refactored Single Player Game and added ability to play another human.">
+      <created>1631143258278</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1631143258278</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Refactored Enum out of Output class, and refactored CalculateScoreForSingleNumber method.">
+      <created>1631170043700</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1631170043700</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Implemented interfaces for players and game mode.">
+      <created>1631236015909</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1631236015909</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Can add any number of players.">
+      <created>1631242015523</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1631242015523</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,6 +253,14 @@
     <MESSAGE value="Can calculate score for four of a kind" />
     <MESSAGE value="Can calculate score for small and large straight" />
     <MESSAGE value="Can calculate a score for full house." />
-    <option name="LAST_COMMIT_MESSAGE" value="Can calculate a score for full house." />
+    <MESSAGE value="Generates 6 random numbers for the dice roll." />
+    <MESSAGE value="Can remove a number from dice roll list." />
+    <MESSAGE value="User can select numbers to remove, and re-roll up to 2 times." />
+    <MESSAGE value="Single Player Game Complete" />
+    <MESSAGE value="Refactored Single Player Game and added ability to play another human." />
+    <MESSAGE value="Refactored Enum out of Output class, and refactored CalculateScoreForSingleNumber method." />
+    <MESSAGE value="Implemented interfaces for players and game mode." />
+    <MESSAGE value="Can add any number of players." />
+    <option name="LAST_COMMIT_MESSAGE" value="Can add any number of players." />
   </component>
 </project>

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -23,13 +24,9 @@ namespace Yatzy
         
         public int CalculateScoreForSingleNumber(List<int> diceRoll, int category)
         {
-            int score = 0;
-            foreach (int dice in diceRoll)
-            {
-                if(dice == category)
-                    score += dice;
-            }
-            return score;
+            int numberOfOccurences = diceRoll.Where(value => value == category).Count();
+
+            return numberOfOccurences * category;
         }
 
         public int CalculatePairScore(List<int> diceRoll)
@@ -73,14 +70,14 @@ namespace Yatzy
             return 0;
         }
 
-        public int CalculateStraightScore(List<int> diceRoll, string category)
+        public int CalculateStraightScore(List<int> diceRoll, int category)
         {
-            if (CheckForStraight(diceRoll, 1) && category == "largeStraight")
+            if (CheckForStraight(diceRoll, 1) && category == 12)
             {
                 return 20;
             }
             
-            if (CheckForStraight(diceRoll, 6) && category == "smallStraight")
+            if (CheckForStraight(diceRoll, 6) && category == 11)
             {
                 return 15;
             }
@@ -100,6 +97,43 @@ namespace Yatzy
                 return diceRoll.Sum();
             
             return 0;
+        }
+        
+        public int CalculateScore(List<int> diceCombo, Enum category)
+        {
+            switch(category)
+            {
+                case ScoringCategories.Chance:
+                    return CalculateChanceScore(diceCombo);
+                case ScoringCategories.Ones:
+                    return CalculateScoreForSingleNumber(diceCombo, 1);
+                case ScoringCategories.Twos:
+                    return CalculateScoreForSingleNumber(diceCombo, 2);
+                case ScoringCategories.Threes:
+                    return CalculateScoreForSingleNumber(diceCombo, 3);
+                case ScoringCategories.Fours:
+                    return CalculateScoreForSingleNumber(diceCombo, 4);
+                case ScoringCategories.Fives:
+                    return CalculateScoreForSingleNumber(diceCombo, 5);
+                case ScoringCategories.Sixes:
+                    return CalculateScoreForSingleNumber(diceCombo, 6);
+                case ScoringCategories.Pair:
+                    return CalculatePairScore(diceCombo);
+                case ScoringCategories.TwoPairs:
+                    return CalculateTwoPairsScore(diceCombo);
+                case ScoringCategories.ThreeOfAKind:
+                    return CalculateThreeOrFourOfAKindScore(diceCombo, 3);
+                case ScoringCategories.FourOfAKind:
+                    return CalculateThreeOrFourOfAKindScore(diceCombo, 4);
+                case ScoringCategories.SmallStraight:
+                    return CalculateStraightScore(diceCombo, 11);
+                case ScoringCategories.LargeStraight:
+                    return CalculateStraightScore(diceCombo, 12);
+                case ScoringCategories.FullHouse:
+                    return CalculateFullHouseScore(diceCombo);
+                default:
+                    return CalculateYatzyScore(diceCombo);
+            }
         }
     }
 }
