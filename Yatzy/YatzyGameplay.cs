@@ -8,39 +8,11 @@ namespace Yatzy
         public IUserInput _userInput;
         private Output _output = new Output();
         private List<IPlayer> playerList = new List<IPlayer>();
-
+        private Validations _validations = new Validations();
+        
         public YatzyGameplay(IUserInput userInput)
         {
             this._userInput = userInput;
-        }
-
-        public int GetNumberOfPlayers()
-        {
-            _output.DisplayPlayerNumberSelectionMessage();
-            int numberOfPlayers = _userInput.GetUserResponse();
-
-            while(numberOfPlayers < 1)
-            {
-                _output.PleaseEnterValidNumberMessage();
-                numberOfPlayers = _userInput.GetUserResponse();
-            }
-
-            return numberOfPlayers;
-        }
-        
-        public void AddPlayers(int numberOfPlayers)
-        {
-            for (int i = 1; i <= numberOfPlayers; i++)
-            {
-                string playerName = GetPlayerName(i);
-                playerList.Add(new HumanPlayer(playerName));
-            }
-        }
-
-        public string GetPlayerName(int playerNumber)
-        {
-            _output.GetPlayerNameMessage(playerNumber);
-            return _userInput.GetPlayerName();
         }
 
         public void SetUpGame()
@@ -59,22 +31,55 @@ namespace Yatzy
             }
         }
 
+        public int GetNumberOfPlayers()
+        {
+            _output.DisplayPlayerNumberSelectionMessage();
+             string response = _userInput.GetUserResponse();
+             int numberOfPlayers = _validations.EnsureNumberIsValid(response);
+
+            while(numberOfPlayers < 1)
+            {
+                _output.InvalidResponseMessage();
+                response = _userInput.GetUserResponse();
+                numberOfPlayers = _validations.EnsureNumberIsValid(response);
+            }
+
+            return numberOfPlayers;
+        }
+        
+        public void AddPlayers(int numberOfPlayers)
+        {
+            for (int i = 1; i <= numberOfPlayers; i++)
+            {
+                string playerName = GetPlayerName(i);
+                playerList.Add(new HumanPlayer(playerName));
+            }
+        }
+
+        public string GetPlayerName(int playerNumber)
+        {
+            _output.GetPlayerNameMessage(playerNumber);
+            string response = _userInput.GetUserResponse();
+            return _validations.ValidatePlayerName(response);
+        }
+
         public void SelectGameModeForMultiplePlayers()
         {
             _output.DisplayPickGameModeMessage();
 
             while (true)
             {
-                int response = _userInput.GetUserResponse();
+                string gameModeResponse = _userInput.GetUserResponse();
+                int response = _validations.EnsureNumberIsValid(gameModeResponse);
 
-                if (response == 1)
+                if (response == 0)
                 {
                     IGameMode allRoundsInOneGo = new AllRoundsInOneGoMode();
                     allRoundsInOneGo.StartGame(playerList);
                     break;
                 }
                 
-                if (response == 2)
+                if (response == 1)
                 {
                     IGameMode takingTurns = new TakingTurnsMode();
                     takingTurns.StartGame(playerList);

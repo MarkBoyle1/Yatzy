@@ -99,37 +99,37 @@ namespace Yatzy
             return 0;
         }
         
-        public int CalculateScore(List<int> diceCombo, string category)
+        public int CalculateScore(List<int> diceCombo, Enum category)
         {
             switch(category)
             {
-                case "Chance":
+                case ScoringCategories.Chance:
                     return CalculateChanceScore(diceCombo);
-                case "Ones":
+                case ScoringCategories.Ones:
                     return CalculateScoreForSingleNumber(diceCombo, 1);
-                case "Twos":
+                case ScoringCategories.Twos:
                     return CalculateScoreForSingleNumber(diceCombo, 2);
-                case "Threes":
+                case ScoringCategories.Threes:
                     return CalculateScoreForSingleNumber(diceCombo, 3);
-                case "Fours":
+                case ScoringCategories.Fours:
                     return CalculateScoreForSingleNumber(diceCombo, 4);
-                case "Fives":
+                case ScoringCategories.Fives:
                     return CalculateScoreForSingleNumber(diceCombo, 5);
-                case "Sixes":
+                case ScoringCategories.Sixes:
                     return CalculateScoreForSingleNumber(diceCombo, 6);
-                case "Pair":
+                case ScoringCategories.Pair:
                     return CalculatePairScore(diceCombo);
-                case "TwoPairs":
+                case ScoringCategories.TwoPairs:
                     return CalculateTwoPairsScore(diceCombo);
-                case "ThreeOfAKind":
+                case ScoringCategories.ThreeOfAKind:
                     return CalculateThreeOrFourOfAKindScore(diceCombo, 3);
-                case "FourOfAKind":
+                case ScoringCategories.FourOfAKind:
                     return CalculateThreeOrFourOfAKindScore(diceCombo, 4);
-                case "SmallStraight":
+                case ScoringCategories.SmallStraight:
                     return CalculateStraightScore(diceCombo, 11);
-                case "LargeStraight":
+                case ScoringCategories.LargeStraight:
                     return CalculateStraightScore(diceCombo, 12);
-                case "FullHouse":
+                case ScoringCategories.FullHouse:
                     return CalculateFullHouseScore(diceCombo);
                 default:
                     return CalculateYatzyScore(diceCombo);

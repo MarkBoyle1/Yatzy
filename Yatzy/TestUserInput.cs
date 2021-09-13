@@ -4,25 +4,16 @@ namespace Yatzy
     public class TestUserInput : IUserInput
     {
         private DiceRoll _diceRoll = new DiceRoll();
-        private int number;
+        private string number;
 
-        public TestUserInput(int number)
+        public TestUserInput(string number)
         {
             this.number = number;
         }
-        public int GetUserResponse()
+        public string GetUserResponse()
         {
             return number;
         }
-
-        public int EnsureNumberIsValid(string response)
-        {
-            return number;
-        }
-
-        public string GetPlayerName()
-        {
-            return "Test";
-        }
+        
     }
 }

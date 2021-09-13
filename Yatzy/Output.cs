@@ -17,17 +17,12 @@ namespace Yatzy
 
         public void InvalidResponseMessage()
         {
-            Console.WriteLine("Invalid response. Please enter a 0 or 1:");
+            Console.WriteLine("Invalid response. Please enter a valid number:");
         }
         
         public void InvalidCategoryMessage()
         {
             Console.WriteLine("That category is not available. Please try again:");
-        }
-
-        public void PleaseEnterValidNumberMessage()
-        {
-            Console.WriteLine("Please enter a valid number:");
         }
 
         public void DisplayDiceRoll(List<int> diceCombo)
@@ -39,16 +34,19 @@ namespace Yatzy
 
         public void DisplayDecisionToRemoveNumberMessage()
         {
-            Console.WriteLine("Would you like to remove a number: (No = 0, Yes = 1)");
+            Console.WriteLine("\nWhat would you like to do: (Please enter a number) \nPick Scoring Category = 0, \nRemove Number = 1, \nView Remaining Categories = 2");
         }
 
-        public void DisplayCategorySelectionMessage(Enum scoringCategories, List<int> remaingingCategories)
+        public void DisplayCategorySelectionMessage()
         {
-
             Console.WriteLine("Please select a scoring category:");
+        }
+
+        public void DisplayRemainingCategories(List<int> remaingingCategories)
+        {
             foreach(int category in remaingingCategories)
             {
-                Console.WriteLine(Enum.GetName(scoringCategories.GetType(), category) + " = " + category);
+                Console.WriteLine((ScoringCategories)category + " = " + category);
             }
         }
         
@@ -76,12 +74,18 @@ namespace Yatzy
         public void DisplayPickGameModeMessage()
         {
             Console.WriteLine("Please select the game mode:");
-            Console.WriteLine("All Rounds in one go = 1" + "\nTaking Turns = 2");
+
+            int numberOfGameModes = Enum.GetValues(typeof(MulitPlayerGameModes)).Length;
+
+            for(int gameModeNumber = 0; gameModeNumber < numberOfGameModes; gameModeNumber++)
+            {
+                Console.WriteLine((MulitPlayerGameModes)gameModeNumber + " = " + gameModeNumber);
+            }
         }
         
         public void InvalidGameModeSelectionMessage()
         {
-            Console.WriteLine("Invalid response. Please enter a 0, 1 or 2:");
+            Console.WriteLine("Invalid response. Please enter 1 or 2:");
         }
 
         public void DisplayPlayerNumberSelectionMessage()

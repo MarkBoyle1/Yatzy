@@ -7,7 +7,10 @@ namespace Yatzy
         void PlayAllRoundsInOneGo();
 
         void PlayOneRound();
-
+        
+        string PlayerName { get; }
+        int TotalScore { get; }
+        
         List<int> GetFinalDiceCombo(List<int> diceCombo);
 
         int CheckIfNumberToRemoveExists(List<int> diceCombo, int numberToRemove);
@@ -20,11 +23,11 @@ namespace Yatzy
         
        int CheckCategoryExists(int category);
 
-       int GetTotalScore();
+       // int GetTotalScore();
 
        int GetNumberOfRemainingCategories();
 
-       string GetPlayerName();
+       // string RetrievePlayerName();
 
     }
 }

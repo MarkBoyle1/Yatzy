@@ -10,33 +10,16 @@ namespace Yatzy
         private DiceRoll _diceRoll = new DiceRoll();
         public List<int> remainingCategories = new List<int>(Enumerable.Range(0,15).ToList());
         private ScoringCalculator _calculator = new ScoringCalculator();
-        public int totalScore = 0;
+        public int TotalScore { get; set; } = 0;
         List<int> diceCombo = new List<int>();
         private Output _output = new Output();
-        public string playerName;
+        private Validations _validations = new Validations();
+        public string PlayerName { get; }
+
 
         public HumanPlayer(string playerName)
         {
-            this.playerName = playerName;
-        }
-        
-        enum ScoringCategories
-        {
-            Chance,
-            Ones,
-            Twos,
-            Threes,
-            Fours,
-            Fives,
-            Sixes,
-            Pair,
-            TwoPairs,
-            ThreeOfAKind,
-            FourOfAKind,
-            SmallStraight,
-            LargeStraight,
-            FullHouse,
-            Yatzy
+            this.PlayerName = playerName;
         }
 
         public void PlayAllRoundsInOneGo()
@@ -46,7 +29,7 @@ namespace Yatzy
                 PlayOneRound();
             }
 
-            _output.DisplayTotalScore(totalScore);
+            _output.DisplayTotalScore(TotalScore);
         }
 
         public void PlayOneRound()
@@ -58,9 +41,9 @@ namespace Yatzy
             _output.DisplayDiceRoll(diceCombo);
 
             int category = PickCategory();
-            int roundScore = _calculator.CalculateScore(diceCombo, Enum.GetName(typeof(ScoringCategories), category));
-            totalScore += roundScore;
-            _output.DisplayCurrentScore(totalScore, roundScore);
+            int roundScore = _calculator.CalculateScore(diceCombo, (ScoringCategories)category);
+            TotalScore += roundScore;
+            _output.DisplayCurrentScore(TotalScore, roundScore);
             diceCombo.Clear();
         }
 
@@ -91,7 +74,8 @@ namespace Yatzy
             while (!diceCombo.Contains(numberToRemove))
             {
                 _output.DisplayInvalidNumberMessage();
-                numberToRemove = _userInput.GetUserResponse();
+                string response = _userInput.GetUserResponse();
+                numberToRemove = _validations.EnsureNumberIsValid(response);
             }
 
             return numberToRemove;
@@ -102,19 +86,26 @@ namespace Yatzy
             while (true)
             {
                 _output.DisplayDecisionToRemoveNumberMessage();
-                int response = _userInput.GetUserResponse();
+                string responseString = _userInput.GetUserResponse();
+                int response = _validations.EnsureNumberIsValid(responseString);
 
                 if (response == 0)
                 {
                     return false;
                 }
-            
                 if (response == 1)
                 {
                     return true;
                 }
+                if (response == 2)
+                {
+                    _output.DisplayRemainingCategories(remainingCategories);
+                }
+                else
+                {
+                    _output.InvalidResponseMessage();
+                }
 
-                _output.InvalidResponseMessage();
             }
         }
         public List<int> RemoveChosenNumbers(List<int> diceCombo)
@@ -127,9 +118,13 @@ namespace Yatzy
                 if (diceCombo.Count > 0)
                 {
                     _output.DisplayNumberToRemoveMessage();
-                    int numberToRemove = _userInput.GetUserResponse();
+                    
+                    string response = _userInput.GetUserResponse();
+                    int numberToRemove = _validations.EnsureNumberIsValid(response);
+                    
                     numberToRemove = CheckIfNumberToRemoveExists(diceCombo, numberToRemove);
                     diceCombo = _diceRoll.RemoveNumberFromDiceRoll( diceCombo, numberToRemove);
+                    
                     _output.DisplayDiceRoll(diceCombo);
                     stillRemoving = ProcessDecisionToRemoveNumber();
                 }
@@ -144,8 +139,12 @@ namespace Yatzy
         
         public int PickCategory()
         {
-            _output.DisplayCategorySelectionMessage(new ScoringCategories(), remainingCategories);
-            int category = _userInput.GetUserResponse();
+            _output.DisplayCategorySelectionMessage();
+            _output.DisplayRemainingCategories(remainingCategories);
+            
+            string response = _userInput.GetUserResponse();
+            int category = _validations.EnsureNumberIsValid(response);
+            
             category = CheckCategoryExists(category);
             remainingCategories.Remove(category);
             return category;
@@ -156,25 +155,16 @@ namespace Yatzy
             while (!remainingCategories.Contains(category))
             {
                 _output.InvalidCategoryMessage();
-                category = _userInput.GetUserResponse();
+                string response = _userInput.GetUserResponse();
+                category = _validations.EnsureNumberIsValid(response);
             }
 
             return category;
         }
 
-        public int GetTotalScore()
-        {
-            return totalScore;
-        }
-
         public int GetNumberOfRemainingCategories()
         {
             return remainingCategories.Count;
-        }
-
-        public string GetPlayerName()
-        {
-            return playerName;
         }
     }
 }

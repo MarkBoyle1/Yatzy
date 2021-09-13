@@ -6,35 +6,10 @@ namespace Yatzy
     {
         private Output _output = new Output();
 
-        public int GetUserResponse()
+        public string GetUserResponse()
         {
-            string response = Console.ReadLine();
-            return EnsureNumberIsValid(response);
+            return Console.ReadLine();
         }
 
-        public int EnsureNumberIsValid(string response)
-        {
-            int number;
-            while (!int.TryParse(response, out number))
-            {
-                _output.PleaseEnterValidNumberMessage();
-                response = Console.ReadLine();
-            }
-
-            return Convert.ToInt32(response);
-        }
-
-        public string GetPlayerName()
-        {
-            string response = Console.ReadLine();
-            while(String.IsNullOrWhiteSpace(response))
-            {
-                _output.DisplayInvalidNameMessage();
-                response = Console.ReadLine();
-            }
-
-            return response;
-        }
-        
     }
 }

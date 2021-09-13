@@ -10,13 +10,15 @@ namespace Yatzy
         {
             foreach (IPlayer player in playerList)
             {
+                string playerName = player.PlayerName;
+                _output.CurrentPlayersTurnMessage(playerName);
                 player.PlayAllRoundsInOneGo();
             }
 
             foreach (IPlayer player in playerList)
             {
-                string playerName = player.GetPlayerName();
-                int playerScore = player.GetTotalScore();
+                string playerName = player.PlayerName;
+                int playerScore = player.TotalScore;
                 _output.DisplayEndResults(playerName, playerScore);
             }
         }

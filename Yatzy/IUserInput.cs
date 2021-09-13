@@ -4,11 +4,7 @@ namespace Yatzy
 {
     public interface IUserInput
     {
-        int GetUserResponse();
-
-        int EnsureNumberIsValid(string response);
-
-        string GetPlayerName();
+        string GetUserResponse();
 
     }
 }
