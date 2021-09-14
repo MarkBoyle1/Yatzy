@@ -17,8 +17,15 @@ namespace Yatzy
 
         public void SetUpGame()
         {
+            _output.DisplayWelcomeMessage();
+            
+            _output.DisplayPlayerNumberSelectionMessage();
             int numberOfPlayers = GetNumberOfPlayers();
-            AddPlayers(numberOfPlayers);
+
+            _output.DisplayNumberOfHumanPlayersSelectionMessage(numberOfPlayers);
+            int numberOfHumanPlayers = GetNumberOfPlayers();
+            
+            AddPlayers(numberOfPlayers, numberOfHumanPlayers);
 
             if (numberOfPlayers == 1)
             {
@@ -33,7 +40,6 @@ namespace Yatzy
 
         public int GetNumberOfPlayers()
         {
-            _output.DisplayPlayerNumberSelectionMessage();
              string response = _userInput.GetUserResponse();
              int numberOfPlayers = _validations.EnsureNumberIsValid(response);
 
@@ -46,13 +52,20 @@ namespace Yatzy
 
             return numberOfPlayers;
         }
-        
-        public void AddPlayers(int numberOfPlayers)
+
+        public void AddPlayers(int numberOfPlayers, int numberOfHumanPlayers)
         {
-            for (int i = 1; i <= numberOfPlayers; i++)
+            for (int i = 1; i <= numberOfHumanPlayers; i++)
             {
                 string playerName = GetPlayerName(i);
                 playerList.Add(new HumanPlayer(playerName));
+            }
+
+            int numberOfComputerPlayers = numberOfPlayers - numberOfHumanPlayers;
+            
+            for (int i = 1; i <= numberOfComputerPlayers; i++)
+            {
+                playerList.Add(new ComputerPlayer($"ComputerPlayer {i}"));
             }
         }
 

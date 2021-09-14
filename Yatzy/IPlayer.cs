@@ -13,21 +13,10 @@ namespace Yatzy
         
         List<int> GetFinalDiceCombo(List<int> diceCombo);
 
-        int CheckIfNumberToRemoveExists(List<int> diceCombo, int numberToRemove);
-
-        bool ProcessDecisionToRemoveNumber();
-
-        List<int> RemoveChosenNumbers(List<int> diceCombo);
-        
         int PickCategory();
         
-       int CheckCategoryExists(int category);
-
-       // int GetTotalScore();
-
        int GetNumberOfRemainingCategories();
 
-       // string RetrievePlayerName();
 
     }
 }

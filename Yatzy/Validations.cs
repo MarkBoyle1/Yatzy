@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Yatzy
 {
@@ -28,6 +29,30 @@ namespace Yatzy
             }
 
             return response;
+        }
+        
+        public int CheckCategoryExists(int category, List<int> remainingCategories)
+        {
+            while (!remainingCategories.Contains(category))
+            {
+                _output.InvalidCategoryMessage();
+                string response = _userInput.GetUserResponse();
+                category = EnsureNumberIsValid(response);
+            }
+
+            return category;
+        }
+        
+        public int CheckIfNumberToRemoveExists(List<int> diceCombo, int numberToRemove)
+        {
+            while (!diceCombo.Contains(numberToRemove))
+            {
+                _output.DisplayInvalidNumberMessage();
+                string response = _userInput.GetUserResponse();
+                numberToRemove = EnsureNumberIsValid(response);
+            }
+
+            return numberToRemove;
         }
         
     }

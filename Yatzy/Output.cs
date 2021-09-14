@@ -92,6 +92,11 @@ namespace Yatzy
         {
             Console.WriteLine("Please select the number of players:");
         }
+        
+        public void DisplayNumberOfHumanPlayersSelectionMessage(int numberOfPlayers)
+        {
+            Console.WriteLine($"Of the {numberOfPlayers} players, how many are human:");
+        }
 
         public void GetPlayerNameMessage(int playerNumber)
         {
@@ -102,5 +107,16 @@ namespace Yatzy
         {
             Console.WriteLine("Please enter a response:");
         }
+
+        public void DisplayCategorySelected(int category)
+        {
+            Console.WriteLine($"Category selected: {(ScoringCategories)category}");
+        }
+
+        public void DisplayWelcomeMessage()
+        {
+            Console.WriteLine("Welcome to Yatzy!\n");
+        }
+        
     }
 }

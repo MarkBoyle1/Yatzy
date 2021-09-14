@@ -1,24 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace Yatzy
 {
-    public class HumanPlayer : IPlayer
+    public class ComputerPlayer : IPlayer
     {
-        private IUserInput _userInput = new UserInput();
         private DiceRoll _diceRoll = new DiceRoll();
         public List<int> remainingCategories = new List<int>(Enumerable.Range(0,15).ToList());
         private ScoringCalculator _calculator = new ScoringCalculator();
+        private ComputerDecisions _computer = new ComputerDecisions();
         public int TotalScore { get; set; } = 0;
         List<int> diceCombo = new List<int>();
         private Output _output = new Output();
-        private Validations _validations = new Validations();
-        private HumanDecisions _humanDecisions = new HumanDecisions();
         public string PlayerName { get; }
 
-
-        public HumanPlayer(string playerName)
+        public ComputerPlayer(string playerName)
         {
             this.PlayerName = playerName;
         }
@@ -54,36 +52,58 @@ namespace Yatzy
 
             while (rollsRemaining > 0)
             {
-                //User will choose numbers that will be removed and the dice will be rolled to replace those values.
-                if (_humanDecisions.MakeDecisionToRemoveNumber(remainingCategories))
+                if(_computer.CheckForFullHouse(diceCombo, remainingCategories))
                 {
-                    diceCombo = _humanDecisions.RemoveChosenNumbers(diceCombo, remainingCategories);
-                    diceCombo = _diceRoll.RollDice(diceCombo);
-                    _output.DisplayDiceRoll(diceCombo);
-                    rollsRemaining--;
+                    return diceCombo;
+                }
+                
+                if (_computer.CheckForTwoPairs(diceCombo, remainingCategories))
+                {
+                    diceCombo = _computer.RemoveSingleNumber(diceCombo);
+                }
+                else if (_computer.CheckForThreeOfAKindOrMore(diceCombo))
+                {
+                    diceCombo = _computer.RemoveOtherNumbers(diceCombo);
+                }
+                else if (diceCombo.Contains(6))
+                {
+                    diceCombo = _computer.TryForLargeStraight(diceCombo);
                 }
                 else
                 {
-                    break;
+                    diceCombo = _computer.TryForSmallStraight(diceCombo);
                 }
+                
+                diceCombo = _diceRoll.RollDice(diceCombo);
+                _output.DisplayDiceRoll(diceCombo);
+                rollsRemaining--;
             }
 
             return diceCombo;
         }
-
+        
         public int PickCategory()
         {
-            _output.DisplayCategorySelectionMessage();
-            _output.DisplayRemainingCategories(remainingCategories);
-            
-            string response = _userInput.GetUserResponse();
-            int category = _validations.EnsureNumberIsValid(response);
-            
-            category = _validations.CheckCategoryExists(category, remainingCategories);
-            remainingCategories.Remove(category);
-            return category;
+            int maxScore = 0;
+            int winningCategory = remainingCategories[0];
+
+            foreach (int category in remainingCategories)
+            {
+                int score = _calculator.CalculateScore(diceCombo, (ScoringCategories) category);
+
+                if (score > maxScore)
+                {
+                    maxScore = score;
+                    winningCategory = category;
+                }
+            }
+
+            _output.DisplayCategorySelected(winningCategory);
+            remainingCategories.Remove(winningCategory);
+            return winningCategory;
         }
         
+
         public int GetNumberOfRemainingCategories()
         {
             return remainingCategories.Count;

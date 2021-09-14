@@ -33,6 +33,10 @@ namespace Yatzy
         {
             List<int> pairs = CollectDuplicateNumbers(diceRoll);
 
+            if (pairs.Count == 0)
+            {
+                return 0;
+            }
             return pairs.Max() * 2;
         }
         

@@ -5,20 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="583bf5dd-24ec-4937-a134-cfa265e23891" name="Changes" comment="Can add any number of players.">
-      <change afterPath="$PROJECT_DIR$/Yatzy/MulitPlayerGameModes.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Yatzy/ScoringCategories.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Yatzy/Validations.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Yatzy.Tests/ComputerPlayerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Yatzy/ComputerDecisions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Yatzy/ComputerPlayer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Yatzy/HumanDecisions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Yatzy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Yatzy/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy.Tests/YatzyGameplayTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy.Tests/YatzyGameplayTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy/AllRoundsInOneGoMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/AllRoundsInOneGoMode.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/HumanPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/HumanPlayer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/IPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/IPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy/IUserInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/IUserInput.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/Output.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/Output.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/ScoringCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/ScoringCalculator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy/TakingTurnsMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/TakingTurnsMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy/TestUserInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/TestUserInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy/UserInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/UserInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/Validations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/Validations.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/YatzyGameplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/YatzyGameplay.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,17 +40,18 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/HumanPlayer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/DiceRoll.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/AllRoundsInOneGoMode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/DiceRoll.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/DiceRoll.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/HumanPlayer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy.Tests/DiceRollTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/DiceRoll.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/AllRoundsInOneGoMode.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/DiceRoll.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1xVqt25cNYoy3GDKpUOdZxqL6No" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
