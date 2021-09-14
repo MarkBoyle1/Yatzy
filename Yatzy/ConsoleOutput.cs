@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Yatzy
 {
-    public class Output
+    public class ConsoleOutput : IOutput
     {
         public void DisplayNumberToRemoveMessage()
         {
@@ -34,7 +34,10 @@ namespace Yatzy
 
         public void DisplayDecisionToRemoveNumberMessage()
         {
-            Console.WriteLine("\nWhat would you like to do: (Please enter a number) \nPick Scoring Category = 0, \nRemove Number = 1, \nView Remaining Categories = 2");
+            Console.WriteLine("\nWhat would you like to do: (Please enter a number) " +
+                              "\nPick Scoring Category or Finish Removing = 0, " +
+                              "\nRemove Number = 1, " +
+                              "\nView Remaining Categories = 2");
         }
 
         public void DisplayCategorySelectionMessage()
@@ -50,6 +53,11 @@ namespace Yatzy
             }
         }
         
+        public void DisplayCategorySelected(int category)
+        {
+            Console.WriteLine($"Category selected: {(ScoringCategories)category}");
+        }
+        
         public void DisplayCurrentScore(int currentScore, int roundScore)
         {
             Console.WriteLine("You gained {0} points", roundScore);
@@ -60,15 +68,15 @@ namespace Yatzy
         {
             Console.WriteLine("Your total score is: " + totalScore);
         }
+        
+        public void DisplayEndResults(string playerName, int playerScore)
+        {
+            Console.WriteLine("{0}'s score: {1}", playerName, playerScore);
+        }
 
         public void CurrentPlayersTurnMessage(string playerName)
         {
             Console.WriteLine("\n{0}'s turn:", playerName);
-        }
-
-        public void DisplayEndResults(string playerName, int playerScore)
-        {
-            Console.WriteLine("{0}'s score: {1}", playerName, playerScore);
         }
 
         public void DisplayPickGameModeMessage()
@@ -77,9 +85,9 @@ namespace Yatzy
 
             int numberOfGameModes = Enum.GetValues(typeof(MulitPlayerGameModes)).Length;
 
-            for(int gameModeNumber = 0; gameModeNumber < numberOfGameModes; gameModeNumber++)
+            for(int i = 0; i < numberOfGameModes; i++)
             {
-                Console.WriteLine((MulitPlayerGameModes)gameModeNumber + " = " + gameModeNumber);
+                Console.WriteLine((MulitPlayerGameModes)i + " = " + i);
             }
         }
         
@@ -106,11 +114,6 @@ namespace Yatzy
         public void DisplayInvalidNameMessage()
         {
             Console.WriteLine("Please enter a response:");
-        }
-
-        public void DisplayCategorySelected(int category)
-        {
-            Console.WriteLine($"Category selected: {(ScoringCategories)category}");
         }
 
         public void DisplayWelcomeMessage()

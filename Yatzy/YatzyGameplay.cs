@@ -6,7 +6,7 @@ namespace Yatzy
     public class YatzyGameplay
     {
         public IUserInput _userInput;
-        private Output _output = new Output();
+        private IOutput _output = new ConsoleOutput();
         private List<IPlayer> playerList = new List<IPlayer>();
         private Validations _validations = new Validations();
         
@@ -43,6 +43,7 @@ namespace Yatzy
              string response = _userInput.GetUserResponse();
              int numberOfPlayers = _validations.EnsureNumberIsValid(response);
 
+            //Number of players selected has to be greater than 0. 
             while(numberOfPlayers < 1)
             {
                 _output.InvalidResponseMessage();

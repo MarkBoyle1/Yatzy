@@ -11,9 +11,9 @@ namespace Yatzy
         public List<int> remainingCategories = new List<int>(Enumerable.Range(0,15).ToList());
         private ScoringCalculator _calculator = new ScoringCalculator();
         private ComputerDecisions _computer = new ComputerDecisions();
-        public int TotalScore { get; set; } = 0;
+        private IOutput _output = new ConsoleOutput();
         List<int> diceCombo = new List<int>();
-        private Output _output = new Output();
+        public int TotalScore { get; set; } = 0;
         public string PlayerName { get; }
 
         public ComputerPlayer(string playerName)

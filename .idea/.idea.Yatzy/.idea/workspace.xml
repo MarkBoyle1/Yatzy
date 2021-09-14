@@ -4,17 +4,19 @@
     <projectFile>Yatzy/Yatzy.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="583bf5dd-24ec-4937-a134-cfa265e23891" name="Changes" comment="Can add any number of players.">
-      <change afterPath="$PROJECT_DIR$/Yatzy.Tests/ComputerPlayerTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Yatzy/ComputerDecisions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Yatzy/ComputerPlayer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Yatzy/HumanDecisions.cs" afterDir="false" />
+    <list default="true" id="583bf5dd-24ec-4937-a134-cfa265e23891" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Yatzy/IOutput.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Yatzy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Yatzy/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy.Tests/YatzyGameplayTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy.Tests/YatzyGameplayTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/AllRoundsInOneGoMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/AllRoundsInOneGoMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/ComputerDecisions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/ComputerDecisions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/ComputerPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/ComputerPlayer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/DiceRoll.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/DiceRoll.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/HumanDecisions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/HumanDecisions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/HumanPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/HumanPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy/IPlayer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/IPlayer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy/Output.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/Output.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy/ScoringCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/ScoringCalculator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/Output.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/ConsoleOutput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/TakingTurnsMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/TakingTurnsMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/TestUserInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/TestUserInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/UserInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/UserInput.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/Validations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/Validations.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/YatzyGameplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/YatzyGameplay.cs" afterDir="false" />
     </list>
@@ -39,20 +41,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/DiceRoll.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/AllRoundsInOneGoMode.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/DiceRoll.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/DiceRoll.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/HumanPlayer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy.Tests/DiceRollTests.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/ScoringCalculator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/AllRoundsInOneGoMode.cs" root0="SKIP_HIGHLIGHTING" />
-  </component>
   <component name="ProjectId" id="1xVqt25cNYoy3GDKpUOdZxqL6No" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -68,7 +56,7 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected=".NET Project.Yatzy">
     <configuration name="Yatzy" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -99,6 +87,7 @@
       <workItem from="1630450820538" duration="8909000" />
       <workItem from="1630626127267" duration="55000" />
       <workItem from="1630626291270" duration="16730000" />
+      <workItem from="1631616093029" duration="3783000" />
     </task>
     <task id="LOCAL-00001" summary="Can calculate chance score">
       <created>1630543371776</created>
@@ -219,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631242015523</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Created Computer Player">
+      <created>1631603621643</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1631603621643</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,6 +255,7 @@
     <MESSAGE value="Refactored Enum out of Output class, and refactored CalculateScoreForSingleNumber method." />
     <MESSAGE value="Implemented interfaces for players and game mode." />
     <MESSAGE value="Can add any number of players." />
-    <option name="LAST_COMMIT_MESSAGE" value="Can add any number of players." />
+    <MESSAGE value="Created Computer Player" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Computer Player" />
   </component>
 </project>

@@ -12,13 +12,8 @@ namespace Yatzy
             int fullHouseScore = _calculator.CalculateScore(diceCombo, ScoringCategories.FullHouse);
             bool fullHouseCategoryExists = remainingCategories.Contains((int) ScoringCategories.FullHouse);
             bool twoPairsCategoryExists = remainingCategories.Contains((int) ScoringCategories.TwoPairs);
-            
-            if (fullHouseScore > 0 && (fullHouseCategoryExists || twoPairsCategoryExists))
-            {
-                return true;
-            }
 
-            return false;
+            return (fullHouseScore > 0 && (fullHouseCategoryExists || twoPairsCategoryExists));
         }
         
         public bool CheckForTwoPairs(List<int> diceCombo, List<int> remainingCategories)
@@ -51,6 +46,7 @@ namespace Yatzy
             return diceCombo;
         }
         
+        //Removes all numbers that are not 3 of a kind or more.
         public List<int> RemoveOtherNumbers(List<int> diceCombo)
         {
             List<int> numberToKeep = diceCombo.GroupBy(number => number)
@@ -63,37 +59,17 @@ namespace Yatzy
 
         public List<int> TryForLargeStraight(List<int> diceCombo)
         {
-            List<int> numbersToRemove = diceCombo.GroupBy(number => number)
-                .Where(group => group.Count() == 2)
+             return diceCombo.GroupBy(number => number)
+                .Where(number => number.Key != 1)
                 .Select(number => number.Key)
                 .ToList();
-            
-            foreach (int number in numbersToRemove)
-            {
-                diceCombo.Remove(number);
-            }
-
-            if (diceCombo.Contains(1))
-            {
-                diceCombo.Remove(1);
-            }
-
-            return diceCombo;
         }
         
         public List<int> TryForSmallStraight(List<int> diceCombo)
         {
-            List<int> numbersToRemove = diceCombo.GroupBy(number => number)
-                .Where(group => group.Count() == 2)
+            return diceCombo.GroupBy(number => number)
                 .Select(number => number.Key)
                 .ToList();
-            
-            foreach (int number in numbersToRemove)
-            {
-                diceCombo.Remove(number);
-            }
-
-            return diceCombo;
         }
     }
 }

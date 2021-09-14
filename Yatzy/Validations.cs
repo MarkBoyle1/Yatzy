@@ -5,7 +5,7 @@ namespace Yatzy
 {
     public class Validations
     {
-        private Output _output = new Output();
+        private IOutput _output = new ConsoleOutput();
         private UserInput _userInput = new UserInput();
         
         public int EnsureNumberIsValid(string response)
@@ -20,6 +20,7 @@ namespace Yatzy
             return Convert.ToInt32(response);
         }
 
+        //Player name can't be empty.
         public string ValidatePlayerName(string response)
         {
             while(String.IsNullOrWhiteSpace(response))

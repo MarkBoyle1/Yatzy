@@ -10,11 +10,11 @@ namespace Yatzy
         private DiceRoll _diceRoll = new DiceRoll();
         public List<int> remainingCategories = new List<int>(Enumerable.Range(0,15).ToList());
         private ScoringCalculator _calculator = new ScoringCalculator();
-        public int TotalScore { get; set; } = 0;
-        List<int> diceCombo = new List<int>();
-        private Output _output = new Output();
+        private IOutput _output = new ConsoleOutput();
         private Validations _validations = new Validations();
         private HumanDecisions _humanDecisions = new HumanDecisions();
+        List<int> diceCombo = new List<int>();
+        public int TotalScore { get; set; } = 0;
         public string PlayerName { get; }
 
 

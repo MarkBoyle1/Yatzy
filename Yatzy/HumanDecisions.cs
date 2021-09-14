@@ -4,7 +4,7 @@ namespace Yatzy
 {
     public class HumanDecisions
     {
-        private Output _output = new Output();
+        private IOutput _output = new ConsoleOutput();
         private UserInput _userInput = new UserInput();
         private Validations _validations = new Validations();
         private DiceRoll _diceRoll = new DiceRoll();

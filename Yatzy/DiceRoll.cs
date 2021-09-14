@@ -7,6 +7,8 @@ namespace Yatzy
     public class DiceRoll
     {
         private Random random = new Random();
+        
+        //Keeps adding dice values until there are 5 in total.
         public List<int> RollDice(List<int> diceCombo)
         {
             while (diceCombo.Count() < 5)
