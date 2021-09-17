@@ -6,20 +6,22 @@ namespace Yatzy
     public class YatzyGameplay
     {
         public IUserInput _userInput;
-        private IOutput _output = new ConsoleOutput();
-        private List<IPlayer> playerList = new List<IPlayer>();
-        private Validations _validations = new Validations();
+        public IOutput _output;
+        private List<IPlayer> playerList = new ();
+        private Validations _validations;
         
-        public YatzyGameplay(IUserInput userInput)
+        public YatzyGameplay(IUserInput userInput, IOutput output)
         {
-            this._userInput = userInput;
+            _userInput = userInput;
+            _output = output;
+            _validations = new Validations(_userInput, _output);
         }
 
         public void SetUpGame()
         {
             _output.DisplayWelcomeMessage();
             
-            _output.DisplayPlayerNumberSelectionMessage();
+            _output.DisplayMessage("Please select the number of players:");
             int numberOfPlayers = GetNumberOfPlayers();
 
             _output.DisplayNumberOfHumanPlayersSelectionMessage(numberOfPlayers);
@@ -46,7 +48,7 @@ namespace Yatzy
             //Number of players selected has to be greater than 0. 
             while(numberOfPlayers < 1)
             {
-                _output.InvalidResponseMessage();
+                _output.DisplayMessage("Invalid response. Please enter a valid number:");
                 response = _userInput.GetUserResponse();
                 numberOfPlayers = _validations.EnsureNumberIsValid(response);
             }
@@ -59,14 +61,14 @@ namespace Yatzy
             for (int i = 1; i <= numberOfHumanPlayers; i++)
             {
                 string playerName = GetPlayerName(i);
-                playerList.Add(new HumanPlayer(playerName));
+                playerList.Add(new HumanPlayer(playerName, _userInput, _output));
             }
 
             int numberOfComputerPlayers = numberOfPlayers - numberOfHumanPlayers;
             
             for (int i = 1; i <= numberOfComputerPlayers; i++)
             {
-                playerList.Add(new ComputerPlayer($"ComputerPlayer {i}"));
+                playerList.Add(new ComputerPlayer($"ComputerPlayer {i}", _output));
             }
         }
 
@@ -88,19 +90,19 @@ namespace Yatzy
 
                 if (response == 0)
                 {
-                    IGameMode allRoundsInOneGo = new AllRoundsInOneGoMode();
+                    IGameMode allRoundsInOneGo = new AllRoundsInOneGoMode(_output);
                     allRoundsInOneGo.StartGame(playerList);
                     break;
                 }
                 
                 if (response == 1)
                 {
-                    IGameMode takingTurns = new TakingTurnsMode();
+                    IGameMode takingTurns = new TakingTurnsMode(_output);
                     takingTurns.StartGame(playerList);
                     break;
                 }
 
-                _output.InvalidGameModeSelectionMessage();
+                _output.DisplayMessage("Invalid response. Please enter 1 or 2:");
             }
         }
     }

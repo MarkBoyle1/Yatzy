@@ -4,7 +4,12 @@ namespace Yatzy
 {
     public class TakingTurnsMode : IGameMode
     {
-        private IOutput _output = new ConsoleOutput();
+        private IOutput _output;
+
+        public TakingTurnsMode(IOutput output)
+        {
+            _output = output;
+        }
         
         public void StartGame(List<IPlayer> playerList)
         {

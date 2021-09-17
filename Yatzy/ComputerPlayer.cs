@@ -7,18 +7,18 @@ namespace Yatzy
 {
     public class ComputerPlayer : IPlayer
     {
-        private DiceRoll _diceRoll = new DiceRoll();
-        public List<int> remainingCategories = new List<int>(Enumerable.Range(0,15).ToList());
-        private ScoringCalculator _calculator = new ScoringCalculator();
-        private ComputerDecisions _computer = new ComputerDecisions();
-        private IOutput _output = new ConsoleOutput();
-        List<int> diceCombo = new List<int>();
+        private DiceRoll _diceRoll = new ();
+        public List<int> remainingCategories = new(Enumerable.Range(0, 15).ToList());
+        private ScoringCalculator _calculator = new ();
+        List<int> diceCombo = new ();
+        private IOutput _output;
         public int TotalScore { get; set; } = 0;
         public string PlayerName { get; }
 
-        public ComputerPlayer(string playerName)
+        public ComputerPlayer(string playerName, IOutput output)
         {
-            this.PlayerName = playerName;
+            PlayerName = playerName;
+            _output = output;
         }
 
         public void PlayAllRoundsInOneGo()
@@ -46,32 +46,27 @@ namespace Yatzy
             diceCombo.Clear();
         }
 
-        public List<int> GetFinalDiceCombo(List<int> diceCombo)
+        private List<int> GetFinalDiceCombo(List<int> diceCombo)
         {
             int rollsRemaining = 2;
 
             while (rollsRemaining > 0)
             {
-                if(_computer.CheckForFullHouse(diceCombo, remainingCategories))
+                if (CheckForFullHouseOrTwoPairs(diceCombo, remainingCategories))
                 {
-                    return diceCombo;
+                    diceCombo = RemoveSingleNumber(diceCombo);
                 }
-                
-                if (_computer.CheckForTwoPairs(diceCombo, remainingCategories))
+                else if (CheckForThreeOfAKindOrMore(diceCombo))
                 {
-                    diceCombo = _computer.RemoveSingleNumber(diceCombo);
-                }
-                else if (_computer.CheckForThreeOfAKindOrMore(diceCombo))
-                {
-                    diceCombo = _computer.RemoveOtherNumbers(diceCombo);
+                    diceCombo = RemoveOtherNumbers(diceCombo);
                 }
                 else if (diceCombo.Contains(6))
                 {
-                    diceCombo = _computer.TryForLargeStraight(diceCombo);
+                    diceCombo = TryForLargeStraight(diceCombo);
                 }
                 else
                 {
-                    diceCombo = _computer.TryForSmallStraight(diceCombo);
+                    diceCombo = TryForSmallStraight(diceCombo);
                 }
                 
                 diceCombo = _diceRoll.RollDice(diceCombo);
@@ -82,7 +77,7 @@ namespace Yatzy
             return diceCombo;
         }
         
-        public int PickCategory()
+        private int PickCategory()
         {
             int maxScore = 0;
             int winningCategory = remainingCategories[0];
@@ -91,7 +86,7 @@ namespace Yatzy
             {
                 int score = _calculator.CalculateScore(diceCombo, (ScoringCategories) category);
 
-                if (score > maxScore)
+                if (score >= maxScore)
                 {
                     maxScore = score;
                     winningCategory = category;
@@ -103,10 +98,64 @@ namespace Yatzy
             return winningCategory;
         }
         
-
         public int GetNumberOfRemainingCategories()
         {
             return remainingCategories.Count;
+        }
+        
+        public bool CheckForFullHouseOrTwoPairs(List<int> diceCombo, List<int> remainingCategories)
+        {
+            int twoPairsScore = _calculator.CalculateScore(diceCombo, ScoringCategories.TwoPairs);
+
+            bool fullHouseCategoryExists = remainingCategories.Contains((int) ScoringCategories.FullHouse);
+            bool twoPairsCategoryExists = remainingCategories.Contains((int) ScoringCategories.TwoPairs);
+
+            return (twoPairsScore > 0 && (fullHouseCategoryExists || twoPairsCategoryExists));
+        }
+
+        public bool CheckForThreeOfAKindOrMore(List<int> diceCombo)
+        {
+            int numbersOccuringThreeOrMoreTimes = diceCombo.GroupBy(number => number)
+                .Where(group => group.Count() >= 3)
+                .Count();
+            
+            return numbersOccuringThreeOrMoreTimes > 0;
+        }
+
+        public List<int> RemoveSingleNumber(List<int> diceCombo)
+        {
+            List<int> numberToRemove = diceCombo.GroupBy(number => number)
+                .Where(group => group.Count() == 1)
+                .Select(number => number.Key)
+                .ToList();
+
+            return diceCombo.Where(number => number != numberToRemove[0]).ToList();
+        }
+        
+        //Removes all numbers that are not 3 of a kind or more.
+        public List<int> RemoveOtherNumbers(List<int> diceCombo)
+        {
+            List<int> numberToKeep = diceCombo.GroupBy(number => number)
+                .Where(group => group.Count() >= 3)
+                .Select(number => number.Key)
+                .ToList();
+            
+            return diceCombo.Where(number => number == numberToKeep[0]).ToList();
+        }
+
+        public List<int> TryForLargeStraight(List<int> diceCombo)
+        {
+             return diceCombo.GroupBy(number => number)
+                .Where(number => number.Key != 1)
+                .Select(number => number.Key)
+                .ToList();
+        }
+        
+        public List<int> TryForSmallStraight(List<int> diceCombo)
+        {
+            return diceCombo.GroupBy(number => number)
+                .Select(number => number.Key)
+                .ToList();
         }
     }
 }

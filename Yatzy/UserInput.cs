@@ -8,6 +8,5 @@ namespace Yatzy
         {
             return Console.ReadLine();
         }
-
     }
 }

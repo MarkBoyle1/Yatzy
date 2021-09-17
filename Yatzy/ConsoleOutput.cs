@@ -1,28 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Channels;
 
 namespace Yatzy
 {
     public class ConsoleOutput : IOutput
     {
-        public void DisplayNumberToRemoveMessage()
+        public void DisplayMessage(string message)
         {
-            Console.WriteLine("What number would you like to remove:");
-        }
-
-        public void DisplayInvalidNumberMessage()
-        {
-            Console.WriteLine("Invalid response. Please select a number from the dice roll:");
-        }
-
-        public void InvalidResponseMessage()
-        {
-            Console.WriteLine("Invalid response. Please enter a valid number:");
-        }
-        
-        public void InvalidCategoryMessage()
-        {
-            Console.WriteLine("That category is not available. Please try again:");
+            Console.WriteLine(message);
         }
 
         public void DisplayDiceRoll(List<int> diceCombo)
@@ -30,19 +16,6 @@ namespace Yatzy
             Console.WriteLine("Your current dice combo is:");
 
             Console.WriteLine(String.Join(" ", diceCombo.ToArray()));
-        }
-
-        public void DisplayDecisionToRemoveNumberMessage()
-        {
-            Console.WriteLine("\nWhat would you like to do: (Please enter a number) " +
-                              "\nPick Scoring Category or Finish Removing = 0, " +
-                              "\nRemove Number = 1, " +
-                              "\nView Remaining Categories = 2");
-        }
-
-        public void DisplayCategorySelectionMessage()
-        {
-            Console.WriteLine("Please select a scoring category:");
         }
 
         public void DisplayRemainingCategories(List<int> remaingingCategories)
@@ -91,16 +64,6 @@ namespace Yatzy
             }
         }
         
-        public void InvalidGameModeSelectionMessage()
-        {
-            Console.WriteLine("Invalid response. Please enter 1 or 2:");
-        }
-
-        public void DisplayPlayerNumberSelectionMessage()
-        {
-            Console.WriteLine("Please select the number of players:");
-        }
-        
         public void DisplayNumberOfHumanPlayersSelectionMessage(int numberOfPlayers)
         {
             Console.WriteLine($"Of the {numberOfPlayers} players, how many are human:");
@@ -111,15 +74,9 @@ namespace Yatzy
             Console.WriteLine($"Please select the name for player {playerNumber}:");
         }
 
-        public void DisplayInvalidNameMessage()
-        {
-            Console.WriteLine("Please enter a response:");
-        }
-
         public void DisplayWelcomeMessage()
         {
             Console.WriteLine("Welcome to Yatzy!\n");
         }
-        
     }
 }

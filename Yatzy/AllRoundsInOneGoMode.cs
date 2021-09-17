@@ -4,7 +4,12 @@ namespace Yatzy
 {
     public class AllRoundsInOneGoMode : IGameMode
     {
-        private IOutput _output = new ConsoleOutput();
+        private IOutput _output;
+
+        public AllRoundsInOneGoMode(IOutput output)
+        {
+            _output = output;
+        }
         
         public void StartGame(List<IPlayer> playerList)
         {

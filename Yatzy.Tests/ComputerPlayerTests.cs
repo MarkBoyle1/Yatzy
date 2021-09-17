@@ -5,7 +5,7 @@ namespace Yatzy.Tests
 {
     public class ComputerPlayerTests
     {
-        private ComputerDecisions _computerDecisions = new ComputerDecisions();
+        private ComputerPlayer _computerPlayer = new ("Test", new ConsoleOutput());
         
         [Fact]
         public void given_diceComboEquals3_3_3_4_4_and_remainingCategoriesEquals1_2_3_4_5_13_when_CheckForFullHouse_then_return_true()
@@ -13,7 +13,7 @@ namespace Yatzy.Tests
             List<int> diceCombo = new List<int>() {3,3,3,4,4};
             List<int> remainingCategories = new List<int>() {1,2,3,4,5,13};
 
-            Assert.True(_computerDecisions.CheckForFullHouse(diceCombo, remainingCategories));
+            Assert.True(_computerPlayer.CheckForFullHouseOrTwoPairs(diceCombo, remainingCategories));
         }
         
         [Fact]
@@ -22,7 +22,7 @@ namespace Yatzy.Tests
             List<int> diceCombo = new List<int>() {3,3,1,4,4};
             List<int> remainingCategories = new List<int>() {1,2,3,8};
 
-            Assert.True(_computerDecisions.CheckForTwoPairs(diceCombo, remainingCategories));
+            Assert.True(_computerPlayer.CheckForFullHouseOrTwoPairs(diceCombo, remainingCategories));
         }
         
         [Fact]
@@ -30,7 +30,7 @@ namespace Yatzy.Tests
         {
             List<int> diceCombo = new List<int>() {3,3,1,3,4};
 
-            Assert.True(_computerDecisions.CheckForThreeOfAKindOrMore(diceCombo));
+            Assert.True(_computerPlayer.CheckForThreeOfAKindOrMore(diceCombo));
         }
         
         [Fact]
@@ -39,7 +39,7 @@ namespace Yatzy.Tests
             List<int> diceCombo = new List<int>() {3,3,1,4,4};
             List<int> expected = new List<int>() {3,3,4,4};
 
-            Assert.Equal(expected, _computerDecisions.RemoveSingleNumber(diceCombo));
+            Assert.Equal(expected, _computerPlayer.RemoveSingleNumber(diceCombo));
         }
         
         [Fact]
@@ -48,7 +48,7 @@ namespace Yatzy.Tests
             List<int> diceCombo = new List<int>() {3,3,3,4,4};
             List<int> expected = new List<int>() {3,3,3};
 
-            Assert.Equal(expected, _computerDecisions.RemoveOtherNumbers(diceCombo));
+            Assert.Equal(expected, _computerPlayer.RemoveOtherNumbers(diceCombo));
         }
         
         [Fact]
@@ -57,7 +57,7 @@ namespace Yatzy.Tests
             List<int> diceCombo = new List<int>() {1,3,3,4,6};
             List<int> expected = new List<int>() {3,4,6};
 
-            Assert.Equal(expected, _computerDecisions.TryForLargeStraight(diceCombo));
+            Assert.Equal(expected, _computerPlayer.TryForLargeStraight(diceCombo));
         }
         
         [Fact]
@@ -66,7 +66,7 @@ namespace Yatzy.Tests
             List<int> diceCombo = new List<int>() {1,3,3,4,5};
             List<int> expected = new List<int>() {1,3,4,5};
             
-            Assert.Equal(expected, _computerDecisions.TryForSmallStraight(diceCombo));
+            Assert.Equal(expected, _computerPlayer.TryForSmallStraight(diceCombo));
         }
     }
 }

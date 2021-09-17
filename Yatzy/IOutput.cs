@@ -4,19 +4,9 @@ namespace Yatzy
 {
     public interface IOutput
     {
-        void DisplayNumberToRemoveMessage();
-
-        void DisplayInvalidNumberMessage();
-
-        void InvalidResponseMessage();
-
-        void InvalidCategoryMessage();
+        void DisplayMessage(string message);
 
         void DisplayDiceRoll(List<int> diceCombo);
-
-        void DisplayDecisionToRemoveNumberMessage();
-
-        void DisplayCategorySelectionMessage();
 
         void DisplayRemainingCategories(List<int> remaingingCategories);
 
@@ -30,17 +20,11 @@ namespace Yatzy
         void CurrentPlayersTurnMessage(string playerName);
 
         void DisplayPickGameModeMessage();
-
-        void InvalidGameModeSelectionMessage();
-
-        void DisplayPlayerNumberSelectionMessage();
-
+        
         void DisplayNumberOfHumanPlayersSelectionMessage(int numberOfPlayers);
 
         void GetPlayerNameMessage(int playerNumber);
-
-        void DisplayInvalidNameMessage();
-
+        
         void DisplayWelcomeMessage();
     }
 }

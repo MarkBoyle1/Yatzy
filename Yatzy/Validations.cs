@@ -5,15 +5,21 @@ namespace Yatzy
 {
     public class Validations
     {
-        private IOutput _output = new ConsoleOutput();
-        private UserInput _userInput = new UserInput();
+        private IOutput _output;
+        private IUserInput _userInput;
+
+        public Validations(IUserInput userInput, IOutput output)
+        {
+            _userInput = userInput;
+            _output = output;
+        }
         
         public int EnsureNumberIsValid(string response)
         {
             int number;
             while (!int.TryParse(response, out number))
             {
-                _output.InvalidResponseMessage();
+                _output.DisplayMessage("Invalid response. Please enter a valid number:");
                 response = _userInput.GetUserResponse();
             }
 
@@ -25,18 +31,19 @@ namespace Yatzy
         {
             while(String.IsNullOrWhiteSpace(response))
             {
-                _output.DisplayInvalidNameMessage();
+                _output.DisplayMessage("Please enter a response:");
                 response = Console.ReadLine();
             }
 
             return response;
         }
         
+        //The selected category needs to be in the remainingCategories list.
         public int CheckCategoryExists(int category, List<int> remainingCategories)
         {
             while (!remainingCategories.Contains(category))
             {
-                _output.InvalidCategoryMessage();
+                _output.DisplayMessage("That category is not available. Please try again:");
                 string response = _userInput.GetUserResponse();
                 category = EnsureNumberIsValid(response);
             }
@@ -44,11 +51,12 @@ namespace Yatzy
             return category;
         }
         
+        //The selected number needs to be in the diceCombo.
         public int CheckIfNumberToRemoveExists(List<int> diceCombo, int numberToRemove)
         {
             while (!diceCombo.Contains(numberToRemove))
             {
-                _output.DisplayInvalidNumberMessage();
+                _output.DisplayMessage("Invalid response. Please select a number from the dice roll:");
                 string response = _userInput.GetUserResponse();
                 numberToRemove = EnsureNumberIsValid(response);
             }

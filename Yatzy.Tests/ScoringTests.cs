@@ -120,17 +120,17 @@ namespace Yatzy.Tests
         }
         
         [Fact]
-        public void given_playerDiceRollEquals1_2_3_4_5_and_categoryEqualsEleven_when_CalculateStraightScore_then_return_15()
+        public void given_playerDiceRollEquals1_2_3_4_5_when_CalculateSmallStraightScore_then_return_15()
         {
             List<int> playerDiceRoll = new List<int>() {1, 2, 3, 4, 5};
-            Assert.Equal(15, _scoringCalculator.CalculateStraightScore(playerDiceRoll, 11));
+            Assert.Equal(15, _scoringCalculator.CalculateSmallStraightScore(playerDiceRoll));
         }
         
         [Fact]
-        public void given_playerDiceRollEquals2_3_4_5_6_and_categoryEqualsTwelve_when_CalculateStraightScore_then_return_20()
+        public void given_playerDiceRollEquals2_3_4_5_6_when_CalculateLargeStraightScore_then_return_20()
         {
             List<int> playerDiceRoll = new List<int>() {2, 3, 4, 5, 6};
-            Assert.Equal(20, _scoringCalculator.CalculateStraightScore(playerDiceRoll, 12));
+            Assert.Equal(20, _scoringCalculator.CalculateLargeStraightScore(playerDiceRoll));
         }
         
         [Fact]
