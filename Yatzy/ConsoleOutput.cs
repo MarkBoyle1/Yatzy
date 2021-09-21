@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Threading.Channels;
 
 namespace Yatzy
 {
@@ -25,14 +24,10 @@ namespace Yatzy
                 Console.WriteLine((ScoringCategories)category + " = " + category);
             }
         }
-        
-        public void DisplayCategorySelected(int category)
+
+        public void DisplayCurrentScore(int currentScore, int roundScore, int category)
         {
             Console.WriteLine($"Category selected: {(ScoringCategories)category}");
-        }
-        
-        public void DisplayCurrentScore(int currentScore, int roundScore)
-        {
             Console.WriteLine("You gained {0} points", roundScore);
             Console.WriteLine("Your current score is: " + currentScore);
         }

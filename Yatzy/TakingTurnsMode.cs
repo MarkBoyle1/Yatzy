@@ -11,19 +11,19 @@ namespace Yatzy
             _output = output;
         }
         
-        public void StartGame(List<IPlayer> playerList)
+        public void StartGame(List<Player> playerList, Dealer dealer)
         {
-            while(playerList[0].GetNumberOfRemainingCategories() > 0)
+            while(playerList[0].RemainingCategories.Count > 0)
             {
-                foreach (IPlayer player in playerList)
+                foreach (Player player in playerList)
                 {
                     string playerName = player.PlayerName;
                     _output.CurrentPlayersTurnMessage(playerName);
-                    player.PlayOneRound();
+                    dealer.PlayOneRound(player);
                 }
             }
 
-            foreach (IPlayer player in playerList)
+            foreach (Player player in playerList)
             {
                 string playerName = player.PlayerName;
                 int playerScore = player.TotalScore;

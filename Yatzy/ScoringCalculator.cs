@@ -6,13 +6,13 @@ namespace Yatzy
 {
     public class ScoringCalculator
     {
-        public int CalculateChanceScore(List<int> diceCombo)
+        private int CalculateChanceScore(List<int> diceCombo)
         {
             return diceCombo.Sum();
         }
 
         //Returns 50 only if all the numbers are the same.
-        public int CalculateYatzyScore(List<int> diceCombo)
+        private int CalculateYatzyScore(List<int> diceCombo)
         {
             if (diceCombo.Any(dice => dice != diceCombo[0]))
             {
@@ -22,14 +22,14 @@ namespace Yatzy
             return 50;
         }
         
-        public int CalculateScoreForSingleNumber(List<int> diceCombo, int category)
+        private int CalculateScoreForSingleNumber(List<int> diceCombo, int category)
         {
             int numberOfOccurences = diceCombo.Where(value => value == category).Count();
 
             return numberOfOccurences * category;
         }
 
-        public int CalculatePairScore(List<int> diceCombo)
+        private int CalculatePairScore(List<int> diceCombo)
         {
             List<int> pairs = CollectDuplicateNumbers(diceCombo);
 
@@ -41,7 +41,7 @@ namespace Yatzy
             return 0;
         }
         
-        public int CalculateTwoPairsScore(List<int> diceCombo)
+        private int CalculateTwoPairsScore(List<int> diceCombo)
         {
             List<int> pairs = CollectDuplicateNumbers(diceCombo);
 
@@ -61,12 +61,12 @@ namespace Yatzy
                 .ToList();
         }
         
-        public IEnumerable<IGrouping<int, int>> GroupTogetherNumbers(List<int> diceCombo)
+        private IEnumerable<IGrouping<int, int>> GroupTogetherNumbers(List<int> diceCombo)
         {
             return diceCombo.GroupBy(number => number);
         }
 
-        public int CalculateThreeOrFourOfAKindScore(List<int> diceCombo, int category)
+        private int CalculateThreeOrFourOfAKindScore(List<int> diceCombo, int category)
         {
             var groupings = GroupTogetherNumbers(diceCombo);
             foreach (var value in groupings)
@@ -78,22 +78,22 @@ namespace Yatzy
             return 0;
         }
 
-        public int CalculateSmallStraightScore(List<int> diceCombo)
+        private int CalculateSmallStraightScore(List<int> diceCombo)
         {
             return (CheckForStraight(diceCombo, 6)) ? 15 : 0;
         }
 
-        public int CalculateLargeStraightScore(List<int> diceCombo)
+        private int CalculateLargeStraightScore(List<int> diceCombo)
         {
             return (CheckForStraight(diceCombo, 1)) ? 20 : 0;
         }
 
-        public bool CheckForStraight(List<int> diceCombo, int missingNumber)
+        private bool CheckForStraight(List<int> diceCombo, int missingNumber)
         {
             return (diceCombo.Distinct().Count() == 5 && !diceCombo.Contains(missingNumber));
         }
         
-        public int CalculateFullHouseScore(List<int> diceCombo)
+        private int CalculateFullHouseScore(List<int> diceCombo)
         {
             var groupings = GroupTogetherNumbers(diceCombo);
             if(groupings.Distinct().Count() == 2 && groupings.Any(dice => dice.Count() == 2))

@@ -1,20 +1,20 @@
-
+using System;
 using System.Collections.Generic;
 
 namespace Yatzy
 {
-    public class YatzyGameplay
+    public class GameSetUp
     {
         public IUserInput _userInput;
         public IOutput _output;
-        private List<IPlayer> playerList = new ();
-        private Validations _validations;
+        private List<Player> playerList = new ();
+        private Dealer _dealer;
         
-        public YatzyGameplay(IUserInput userInput, IOutput output)
+        public GameSetUp(IUserInput userInput, IOutput output)
         {
             _userInput = userInput;
             _output = output;
-            _validations = new Validations(_userInput, _output);
+            _dealer = new Dealer(_output, userInput);
         }
 
         public void SetUpGame()
@@ -26,13 +26,20 @@ namespace Yatzy
 
             _output.DisplayNumberOfHumanPlayersSelectionMessage(numberOfPlayers);
             int numberOfHumanPlayers = GetNumberOfPlayers();
+
+            while (numberOfHumanPlayers > numberOfPlayers)
+            {
+                _output.DisplayMessage("Invalid response. Please enter a valid number:");
+                numberOfHumanPlayers = GetNumberOfPlayers();
+            }
             
             AddPlayers(numberOfPlayers, numberOfHumanPlayers);
+            
 
             if (numberOfPlayers == 1)
             {
                 IGameMode singlePlayer = new SinglePlayerMode();
-                singlePlayer.StartGame(playerList);
+                singlePlayer.StartGame(playerList, _dealer);
             }
             else
             {
@@ -43,14 +50,14 @@ namespace Yatzy
         public int GetNumberOfPlayers()
         {
              string response = _userInput.GetUserResponse();
-             int numberOfPlayers = _validations.EnsureNumberIsValid(response);
+             int numberOfPlayers = EnsureNumberIsValid(response);
 
             //Number of players selected has to be greater than 0. 
             while(numberOfPlayers < 1)
             {
                 _output.DisplayMessage("Invalid response. Please enter a valid number:");
                 response = _userInput.GetUserResponse();
-                numberOfPlayers = _validations.EnsureNumberIsValid(response);
+                numberOfPlayers = EnsureNumberIsValid(response);
             }
 
             return numberOfPlayers;
@@ -61,14 +68,14 @@ namespace Yatzy
             for (int i = 1; i <= numberOfHumanPlayers; i++)
             {
                 string playerName = GetPlayerName(i);
-                playerList.Add(new HumanPlayer(playerName, _userInput, _output));
+                playerList.Add(new Player(playerName, "human"));
             }
 
             int numberOfComputerPlayers = numberOfPlayers - numberOfHumanPlayers;
             
             for (int i = 1; i <= numberOfComputerPlayers; i++)
             {
-                playerList.Add(new ComputerPlayer($"ComputerPlayer {i}", _output));
+                playerList.Add(new Player($"ComputerPlayer {i}", "computer"));
             }
         }
 
@@ -76,7 +83,14 @@ namespace Yatzy
         {
             _output.GetPlayerNameMessage(playerNumber);
             string response = _userInput.GetUserResponse();
-            return _validations.ValidatePlayerName(response);
+            
+            while(String.IsNullOrWhiteSpace(response))
+            {
+                _output.DisplayMessage("Please enter a response:");
+                response = Console.ReadLine();
+            }
+            
+            return response;
         }
 
         public void SelectGameModeForMultiplePlayers()
@@ -86,24 +100,36 @@ namespace Yatzy
             while (true)
             {
                 string gameModeResponse = _userInput.GetUserResponse();
-                int response = _validations.EnsureNumberIsValid(gameModeResponse);
+                int response = EnsureNumberIsValid(gameModeResponse);
 
                 if (response == 0)
                 {
                     IGameMode allRoundsInOneGo = new AllRoundsInOneGoMode(_output);
-                    allRoundsInOneGo.StartGame(playerList);
+                    allRoundsInOneGo.StartGame(playerList, _dealer);
                     break;
                 }
                 
                 if (response == 1)
                 {
                     IGameMode takingTurns = new TakingTurnsMode(_output);
-                    takingTurns.StartGame(playerList);
+                    takingTurns.StartGame(playerList, _dealer);
                     break;
                 }
 
                 _output.DisplayMessage("Invalid response. Please enter 1 or 2:");
             }
+        }
+        
+        private int EnsureNumberIsValid(string response)
+        {
+            int number;
+            while (!int.TryParse(response, out number))
+            {
+                _output.DisplayMessage("Invalid response. Please enter a valid number:");
+                response = _userInput.GetUserResponse();
+            }
+
+            return Convert.ToInt32(response);
         }
     }
 }

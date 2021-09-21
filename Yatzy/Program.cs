@@ -5,7 +5,7 @@ namespace Yatzy
     {
         static void Main(string[] args)
         {
-            YatzyGameplay gameplay = new YatzyGameplay(new UserInput(), new ConsoleOutput());
+            GameSetUp gameplay = new GameSetUp(new UserInput(), new ConsoleOutput());
             gameplay.SetUpGame();
         }
     }
