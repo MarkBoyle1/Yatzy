@@ -10,8 +10,8 @@ namespace Yatzy
         private ScoringCalculator _calculator;
         private IOutput _output;
         List<int> _diceCombo;
-        private List<int> _remainingCategories;
         private ComputerDecisions _computerDecisions;
+        private Player _player; 
         
         public Dealer(IOutput output, IUserInput userInput)
         {
@@ -23,9 +23,9 @@ namespace Yatzy
             _computerDecisions = new ComputerDecisions();
         }
 
-        public void PlayOneRound(Player player)
+        public int PlayOneRound(Player player)
         {
-            _remainingCategories = player.RemainingCategories;
+            _player = player;
 
             _diceCombo = _diceRoll.RollDice(_diceCombo);
             _output.DisplayDiceRoll(_diceCombo);
@@ -35,16 +35,16 @@ namespace Yatzy
 
             int category = player.PlayerType == "human"
                 ? PickCategory()
-                : _computerDecisions.GetCategoryFromComputerPlayer(_diceCombo, _remainingCategories);
-
-            _remainingCategories.Remove(category);
+                : _computerDecisions.GetCategoryFromComputerPlayer(_diceCombo, _player.RemainingCategories);
+            
+            _output.DisplayCategorySelected(category);
+            
+            player.RemainingCategories.Remove(category);
             
             int roundScore = _calculator.CalculateScore(_diceCombo, (ScoringCategories)category);
-            player.TotalScore += roundScore;
-            _output.DisplayCurrentScore(player.TotalScore, roundScore, category);
-            
-            player.RemainingCategories = _remainingCategories;
             _diceCombo.Clear();
+            
+            return roundScore;
         }
 
         private List<int> GetFinalDiceCombo(List<int> diceCombo, Player player)
@@ -55,7 +55,7 @@ namespace Yatzy
             {
                 bool decision = player.PlayerType == "human" 
                     ? MakeDecisionToRemoveNumber() 
-                    : _computerDecisions.GetDecisionToRemoveNumber(diceCombo, _remainingCategories);
+                    : _computerDecisions.GetDecisionToRemoveNumber(diceCombo, _player.RemainingCategories);
                 
                 //User will choose numbers that will be removed and the dice will be rolled to replace those values.
                 if (decision)
@@ -93,7 +93,7 @@ namespace Yatzy
                     }
                     else
                     {
-                        numberToRemove = _computerDecisions.GetNumberToRemove(diceCombo, _remainingCategories);
+                        numberToRemove = _computerDecisions.GetNumberToRemove(diceCombo, _player.RemainingCategories);
                     }
                     
                     bool doesExist = diceCombo.Contains(numberToRemove);
@@ -111,7 +111,7 @@ namespace Yatzy
                     _output.DisplayDiceRoll(diceCombo);
                     stillRemoving = player.PlayerType == "human" 
                         ? MakeDecisionToRemoveNumber() 
-                        : _computerDecisions.GetDecisionToRemoveNumber(diceCombo, _remainingCategories);
+                        : _computerDecisions.GetDecisionToRemoveNumber(diceCombo, _player.RemainingCategories);
                 }
                 else
                 {
@@ -144,7 +144,7 @@ namespace Yatzy
                 }
                 if (response == 2)
                 {
-                    _output.DisplayRemainingCategories(_remainingCategories);
+                    _output.DisplayRemainingCategories(_player.RemainingCategories);
                 }
                 else
                 {
@@ -156,25 +156,25 @@ namespace Yatzy
         private int PickCategory()
         {
             _output.DisplayMessage("Please select a scoring category:");
-            _output.DisplayRemainingCategories(_remainingCategories);
+            _output.DisplayRemainingCategories(_player.RemainingCategories);
             
             string response = _userInput.GetUserResponse();
             int category = EnsureNumberIsValid(response);
             
-            bool doesExist = _remainingCategories.Contains(category);
+            bool doesExist = _player.RemainingCategories.Contains(category);
             
             while (!doesExist)
             {
                 _output.DisplayMessage("That category is not available. Please try again:");
                 response = _userInput.GetUserResponse();
                 category = EnsureNumberIsValid(response);
-                doesExist = _remainingCategories.Contains(category);
+                doesExist = _player.RemainingCategories.Contains(category);
             }
             
             return category;
         }
 
-        private int EnsureNumberIsValid(string response)
+        public int EnsureNumberIsValid(string response)
         {
             int number;
             while (!int.TryParse(response, out number))

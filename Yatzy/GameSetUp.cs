@@ -17,7 +17,7 @@ namespace Yatzy
             _dealer = new Dealer(_output, userInput);
         }
 
-        public void SetUpGame()
+        public void RunProgram()
         {
             _output.DisplayWelcomeMessage();
             
@@ -33,12 +33,12 @@ namespace Yatzy
                 numberOfHumanPlayers = GetNumberOfPlayers();
             }
             
-            AddPlayers(numberOfPlayers, numberOfHumanPlayers);
+            playerList = AddPlayers(numberOfPlayers, numberOfHumanPlayers);
             
 
             if (numberOfPlayers == 1)
             {
-                IGameMode singlePlayer = new SinglePlayerMode();
+                IGameMode singlePlayer = new SinglePlayerMode(_output);
                 singlePlayer.StartGame(playerList, _dealer);
             }
             else
@@ -50,33 +50,37 @@ namespace Yatzy
         public int GetNumberOfPlayers()
         {
              string response = _userInput.GetUserResponse();
-             int numberOfPlayers = EnsureNumberIsValid(response);
+             int numberOfPlayers = _dealer.EnsureNumberIsValid(response);
 
             //Number of players selected has to be greater than 0. 
             while(numberOfPlayers < 1)
             {
                 _output.DisplayMessage("Invalid response. Please enter a valid number:");
                 response = _userInput.GetUserResponse();
-                numberOfPlayers = EnsureNumberIsValid(response);
+                numberOfPlayers = _dealer.EnsureNumberIsValid(response);
             }
 
             return numberOfPlayers;
         }
 
-        public void AddPlayers(int numberOfPlayers, int numberOfHumanPlayers)
+        public List<Player> AddPlayers(int numberOfPlayers, int numberOfHumanPlayers)
         {
+            List<Player> players = new List<Player>();
+            
             for (int i = 1; i <= numberOfHumanPlayers; i++)
             {
                 string playerName = GetPlayerName(i);
-                playerList.Add(new Player(playerName, "human"));
+                players.Add(new Player(playerName, "human"));
             }
 
             int numberOfComputerPlayers = numberOfPlayers - numberOfHumanPlayers;
             
             for (int i = 1; i <= numberOfComputerPlayers; i++)
             {
-                playerList.Add(new Player($"ComputerPlayer {i}", "computer"));
+                players.Add(new Player($"ComputerPlayer {i}", "computer"));
             }
+
+            return players;
         }
 
         public string GetPlayerName(int playerNumber)
@@ -100,7 +104,7 @@ namespace Yatzy
             while (true)
             {
                 string gameModeResponse = _userInput.GetUserResponse();
-                int response = EnsureNumberIsValid(gameModeResponse);
+                int response = _dealer.EnsureNumberIsValid(gameModeResponse);
 
                 if (response == 0)
                 {
@@ -118,18 +122,6 @@ namespace Yatzy
 
                 _output.DisplayMessage("Invalid response. Please enter 1 or 2:");
             }
-        }
-        
-        private int EnsureNumberIsValid(string response)
-        {
-            int number;
-            while (!int.TryParse(response, out number))
-            {
-                _output.DisplayMessage("Invalid response. Please enter a valid number:");
-                response = _userInput.GetUserResponse();
-            }
-
-            return Convert.ToInt32(response);
         }
     }
 }

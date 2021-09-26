@@ -19,7 +19,11 @@ namespace Yatzy
                 {
                     string playerName = player.PlayerName;
                     _output.CurrentPlayersTurnMessage(playerName);
-                    dealer.PlayOneRound(player);
+                    
+                    int roundScore = dealer.PlayOneRound(player);
+                    
+                    player.TotalScore += roundScore;
+                    _output.DisplayCurrentScore(player.TotalScore, roundScore);
                 }
             }
 
@@ -27,6 +31,7 @@ namespace Yatzy
             {
                 string playerName = player.PlayerName;
                 int playerScore = player.TotalScore;
+                
                 _output.DisplayEndResults(playerName, playerScore);
             }
         }

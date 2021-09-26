@@ -25,9 +25,13 @@ namespace Yatzy
             }
         }
 
-        public void DisplayCurrentScore(int currentScore, int roundScore, int category)
+        public void DisplayCategorySelected(int category)
         {
             Console.WriteLine($"Category selected: {(ScoringCategories)category}");
+        }
+
+        public void DisplayCurrentScore(int currentScore, int roundScore)
+        {
             Console.WriteLine("You gained {0} points", roundScore);
             Console.WriteLine("Your current score is: " + currentScore);
         }

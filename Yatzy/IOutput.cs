@@ -10,7 +10,7 @@ namespace Yatzy
 
         void DisplayRemainingCategories(List<int> remaingingCategories);
 
-        void DisplayCurrentScore(int currentScore, int roundScore, int category);
+        void DisplayCurrentScore(int currentScore, int roundScore);
 
         void DisplayTotalScore(int totalScore);
 
@@ -24,5 +24,7 @@ namespace Yatzy
         void GetPlayerNameMessage(int playerNumber);
         
         void DisplayWelcomeMessage();
+
+        void DisplayCategorySelected(int category);
     }
 }

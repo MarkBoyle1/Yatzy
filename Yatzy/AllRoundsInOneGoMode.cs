@@ -20,7 +20,9 @@ namespace Yatzy
 
                 while (player.RemainingCategories.Count > 0)
                 {
-                    dealer.PlayOneRound(player);
+                    int roundScore = dealer.PlayOneRound(player);
+                    player.TotalScore += roundScore;
+                    _output.DisplayCurrentScore(player.TotalScore, roundScore);
                 }
             }
 
