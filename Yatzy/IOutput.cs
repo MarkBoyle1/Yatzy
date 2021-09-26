@@ -22,8 +22,6 @@ namespace Yatzy
         void DisplayNumberOfHumanPlayersSelectionMessage(int numberOfPlayers);
 
         void GetPlayerNameMessage(int playerNumber);
-        
-        void DisplayWelcomeMessage();
 
         void DisplayCategorySelected(int category);
     }

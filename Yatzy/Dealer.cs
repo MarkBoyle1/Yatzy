@@ -9,7 +9,7 @@ namespace Yatzy
         private DiceRoll _diceRoll;
         private ScoringCalculator _calculator;
         private IOutput _output;
-        List<int> _diceCombo;
+        private List<int> _diceCombo;
         private ComputerDecisions _computerDecisions;
         private Player _player; 
         

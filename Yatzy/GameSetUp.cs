@@ -5,8 +5,8 @@ namespace Yatzy
 {
     public class GameSetUp
     {
-        public IUserInput _userInput;
-        public IOutput _output;
+        private IUserInput _userInput;
+        private IOutput _output;
         private List<Player> playerList = new ();
         private Dealer _dealer;
         
@@ -19,7 +19,7 @@ namespace Yatzy
 
         public void RunProgram()
         {
-            _output.DisplayWelcomeMessage();
+            _output.DisplayMessage("Welcome to Yatzy!\n");
             
             _output.DisplayMessage("Please select the number of players:");
             int numberOfPlayers = GetNumberOfPlayers();

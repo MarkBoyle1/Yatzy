@@ -72,10 +72,5 @@ namespace Yatzy
         {
             Console.WriteLine($"Please select the name for player {playerNumber}:");
         }
-
-        public void DisplayWelcomeMessage()
-        {
-            Console.WriteLine("Welcome to Yatzy!\n");
-        }
     }
 }

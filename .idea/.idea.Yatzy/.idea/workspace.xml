@@ -4,16 +4,15 @@
     <projectFile>Yatzy/Yatzy.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="583bf5dd-24ec-4937-a134-cfa265e23891" name="Changes" comment="">
+    <list default="true" id="583bf5dd-24ec-4937-a134-cfa265e23891" name="Changes" comment="Refactored any method that was returning void.">
+      <change afterPath="$PROJECT_DIR$/Yatzy/TestUserInput.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Yatzy/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Yatzy/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy/AllRoundsInOneGoMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/AllRoundsInOneGoMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy.Tests/YatzyGameplayTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy.Tests/YatzyGameplayTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/ConsoleOutput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/ConsoleOutput.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/Dealer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/Dealer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/GameSetUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/GameSetUp.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Yatzy/IOutput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/IOutput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy/SinglePlayerMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/SinglePlayerMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Yatzy/TakingTurnsMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/TakingTurnsMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Yatzy/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Yatzy/Player.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +36,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/AllRoundsInOneGoMode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/Mark.Boyle/Desktop/c#/katas/Yatzy/Yatzy/AllRoundsInOneGoMode.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1xVqt25cNYoy3GDKpUOdZxqL6No" />
@@ -87,7 +87,7 @@
       <workItem from="1630626291270" duration="16730000" />
       <workItem from="1631616093029" duration="25607000" />
       <workItem from="1631856824498" duration="680000" />
-      <workItem from="1632089701157" duration="42436000" />
+      <workItem from="1632089701157" duration="44008000" />
     </task>
     <task id="LOCAL-00001" summary="Can calculate chance score">
       <created>1630543371776</created>
@@ -236,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632205342350</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Refactored any method that was returning void.">
+      <created>1632696267780</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1632696267780</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,6 +287,7 @@
     <MESSAGE value="Created an interface for output." />
     <MESSAGE value="Refactored HumanPlayer, ComputerPlayer and ConsoleOutput classes." />
     <MESSAGE value="Created Dealer class to handle gameplay logic. Combined and refactored HumanPlayer and ComputerPlayer classes. Created ComputerDecisions class to handle computer logic." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Dealer class to handle gameplay logic. Combined and refactored HumanPlayer and ComputerPlayer classes. Created ComputerDecisions class to handle computer logic." />
+    <MESSAGE value="Refactored any method that was returning void." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored any method that was returning void." />
   </component>
 </project>

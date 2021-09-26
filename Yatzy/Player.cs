@@ -6,7 +6,7 @@ namespace Yatzy
 {
     public class Player
     {
-        public List<int> RemainingCategories { get; set; }
+        public List<int> RemainingCategories { get; }
         public int TotalScore { get; set; }
         public string PlayerName { get; }
         public string PlayerType { get; }
