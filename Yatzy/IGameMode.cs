@@ -4,6 +4,6 @@ namespace Yatzy
 {
     public interface IGameMode
     {
-        void StartGame(List<IPlayer> playerList);
+        void StartGame(List<Player> playerList, Dealer dealer);
     }
 }

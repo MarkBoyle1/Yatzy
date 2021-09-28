@@ -6,15 +6,15 @@ namespace Yatzy
 {
     public class ScoringCalculator
     {
-        public int CalculateChanceScore(List<int> diceRoll)
+        private int CalculateChanceScore(List<int> diceCombo)
         {
-            return diceRoll.Sum();
+            return diceCombo.Sum();
         }
 
         //Returns 50 only if all the numbers are the same.
-        public int CalculateYatzyScore(List<int> diceRoll)
+        private int CalculateYatzyScore(List<int> diceCombo)
         {
-            if (diceRoll.Any(dice => dice != diceRoll[0]))
+            if (diceCombo.Any(dice => dice != diceCombo[0]))
             {
                 return 0;
             }
@@ -22,45 +22,53 @@ namespace Yatzy
             return 50;
         }
         
-        public int CalculateScoreForSingleNumber(List<int> diceRoll, int category)
+        private int CalculateScoreForSingleNumber(List<int> diceCombo, int category)
         {
-            int numberOfOccurences = diceRoll.Where(value => value == category).Count();
+            int numberOfOccurences = diceCombo.Where(value => value == category).Count();
 
             return numberOfOccurences * category;
         }
 
-        public int CalculatePairScore(List<int> diceRoll)
+        private int CalculatePairScore(List<int> diceCombo)
         {
-            List<int> pairs = CollectDuplicateNumbers(diceRoll);
+            List<int> pairs = CollectDuplicateNumbers(diceCombo);
 
-            return pairs.Max() * 2;
+            if (pairs.Count > 0)
+            {
+                return pairs.Max() * 2;
+            }
+            
+            return 0;
         }
         
-        public int CalculateTwoPairsScore(List<int> diceRoll)
+        private int CalculateTwoPairsScore(List<int> diceCombo)
         {
-            List<int> pairs = CollectDuplicateNumbers(diceRoll);
-            if(pairs.Count() == 2)
+            List<int> pairs = CollectDuplicateNumbers(diceCombo);
+
+            if (pairs.Count == 2)
+            {
                 return pairs.Sum() * 2;
+            }
 
             return 0;
         }
 
-        private List<int> CollectDuplicateNumbers(List<int> diceRoll)
+        private List<int> CollectDuplicateNumbers(List<int> diceCombo)
         {
-            return GroupTogetherNumbers(diceRoll)
+            return GroupTogetherNumbers(diceCombo)
                 .Where(group => group.Count() > 1)
                 .Select(dice => dice.Key)
                 .ToList();
         }
         
-        public IEnumerable<IGrouping<int, int>> GroupTogetherNumbers(List<int> diceRoll)
+        private IEnumerable<IGrouping<int, int>> GroupTogetherNumbers(List<int> diceCombo)
         {
-            return diceRoll.GroupBy(number => number);
+            return diceCombo.GroupBy(number => number);
         }
 
-        public int CalculateThreeOrFourOfAKindScore(List<int> diceRoll, int category)
+        private int CalculateThreeOrFourOfAKindScore(List<int> diceCombo, int category)
         {
-            var groupings = GroupTogetherNumbers(diceRoll);
+            var groupings = GroupTogetherNumbers(diceCombo);
             foreach (var value in groupings)
             {
                 if(value.Count() >= category)
@@ -70,31 +78,26 @@ namespace Yatzy
             return 0;
         }
 
-        public int CalculateStraightScore(List<int> diceRoll, int category)
+        private int CalculateSmallStraightScore(List<int> diceCombo)
         {
-            if (CheckForStraight(diceRoll, 1) && category == 12)
-            {
-                return 20;
-            }
-            
-            if (CheckForStraight(diceRoll, 6) && category == 11)
-            {
-                return 15;
-            }
-            
-            return 0;
+            return (CheckForStraight(diceCombo, 6)) ? 15 : 0;
         }
 
-        public bool CheckForStraight(List<int> diceRoll, int missingNumber)
+        private int CalculateLargeStraightScore(List<int> diceCombo)
         {
-            return (diceRoll.Distinct().Count() == 5 && !diceRoll.Contains(missingNumber));
+            return (CheckForStraight(diceCombo, 1)) ? 20 : 0;
+        }
+
+        private bool CheckForStraight(List<int> diceCombo, int missingNumber)
+        {
+            return (diceCombo.Distinct().Count() == 5 && !diceCombo.Contains(missingNumber));
         }
         
-        public int CalculateFullHouseScore(List<int> diceRoll)
+        private int CalculateFullHouseScore(List<int> diceCombo)
         {
-            var groupings = GroupTogetherNumbers(diceRoll);
+            var groupings = GroupTogetherNumbers(diceCombo);
             if(groupings.Distinct().Count() == 2 && groupings.Any(dice => dice.Count() == 2))
-                return diceRoll.Sum();
+                return diceCombo.Sum();
             
             return 0;
         }
@@ -106,29 +109,24 @@ namespace Yatzy
                 case ScoringCategories.Chance:
                     return CalculateChanceScore(diceCombo);
                 case ScoringCategories.Ones:
-                    return CalculateScoreForSingleNumber(diceCombo, 1);
                 case ScoringCategories.Twos:
-                    return CalculateScoreForSingleNumber(diceCombo, 2);
                 case ScoringCategories.Threes:
-                    return CalculateScoreForSingleNumber(diceCombo, 3);
                 case ScoringCategories.Fours:
-                    return CalculateScoreForSingleNumber(diceCombo, 4);
                 case ScoringCategories.Fives:
-                    return CalculateScoreForSingleNumber(diceCombo, 5);
                 case ScoringCategories.Sixes:
-                    return CalculateScoreForSingleNumber(diceCombo, 6);
+                    return CalculateScoreForSingleNumber(diceCombo, Convert.ToInt32(category));
                 case ScoringCategories.Pair:
                     return CalculatePairScore(diceCombo);
                 case ScoringCategories.TwoPairs:
                     return CalculateTwoPairsScore(diceCombo);
                 case ScoringCategories.ThreeOfAKind:
-                    return CalculateThreeOrFourOfAKindScore(diceCombo, 3);
+                    return CalculateThreeOrFourOfAKindScore(diceCombo, 3); 
                 case ScoringCategories.FourOfAKind:
                     return CalculateThreeOrFourOfAKindScore(diceCombo, 4);
                 case ScoringCategories.SmallStraight:
-                    return CalculateStraightScore(diceCombo, 11);
+                    return CalculateSmallStraightScore(diceCombo);
                 case ScoringCategories.LargeStraight:
-                    return CalculateStraightScore(diceCombo, 12);
+                    return CalculateLargeStraightScore(diceCombo);
                 case ScoringCategories.FullHouse:
                     return CalculateFullHouseScore(diceCombo);
                 default:

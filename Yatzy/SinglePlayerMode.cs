@@ -4,9 +4,20 @@ namespace Yatzy
 {
     public class SinglePlayerMode : IGameMode
     {
-        public void StartGame(List<IPlayer> playerList)
+        private IOutput _output;
+
+        public SinglePlayerMode(IOutput output)
         {
-            playerList[0].PlayAllRoundsInOneGo();
+            _output = output;
+        }
+        public void StartGame(List<Player> playerList, Dealer dealer)
+        {
+            while (playerList[0].RemainingCategories.Count > 0)
+            {
+                int roundScore = dealer.PlayOneRound(playerList[0]);
+                playerList[0].TotalScore += roundScore;
+                _output.DisplayCurrentScore(playerList[0].TotalScore, roundScore);
+            }
         }
     }
 }

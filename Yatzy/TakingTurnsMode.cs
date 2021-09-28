@@ -4,24 +4,34 @@ namespace Yatzy
 {
     public class TakingTurnsMode : IGameMode
     {
-        private Output _output = new Output();
-        
-        public void StartGame(List<IPlayer> playerList)
+        private IOutput _output;
+
+        public TakingTurnsMode(IOutput output)
         {
-            while(playerList[0].GetNumberOfRemainingCategories() > 0)
+            _output = output;
+        }
+        
+        public void StartGame(List<Player> playerList, Dealer dealer)
+        {
+            while(playerList[0].RemainingCategories.Count > 0)
             {
-                foreach (IPlayer player in playerList)
+                foreach (Player player in playerList)
                 {
                     string playerName = player.PlayerName;
                     _output.CurrentPlayersTurnMessage(playerName);
-                    player.PlayOneRound();
+                    
+                    int roundScore = dealer.PlayOneRound(player);
+                    
+                    player.TotalScore += roundScore;
+                    _output.DisplayCurrentScore(player.TotalScore, roundScore);
                 }
             }
 
-            foreach (IPlayer player in playerList)
+            foreach (Player player in playerList)
             {
                 string playerName = player.PlayerName;
                 int playerScore = player.TotalScore;
+                
                 _output.DisplayEndResults(playerName, playerScore);
             }
         }
